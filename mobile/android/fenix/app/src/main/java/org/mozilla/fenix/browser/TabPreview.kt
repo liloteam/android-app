@@ -200,7 +200,7 @@ class TabPreview @JvmOverloads constructor(
                 displayState = DisplayState(
                     browserActionsStart = listOf(
                         ActionButtonRes(
-                            drawableResId = R.drawable.mozac_ic_home_24,
+                            drawableResId = R.drawable.ic_home,
                             contentDescription = R.string.browser_toolbar_home,
                             onClick = object : BrowserToolbarEvent {},
                         ),

@@ -343,7 +343,7 @@ class BrowserFragment : BaseBrowserFragment(), UserInteractionHandler {
         homeAction = BrowserToolbar.Button(
             imageDrawable = AppCompatResources.getDrawable(
                 context,
-                R.drawable.mozac_ic_home_24,
+                R.drawable.ic_home,
             )!!,
             contentDescription = context.getString(R.string.browser_toolbar_home),
             iconTintColorResource = ThemeManager.resolveAttribute(R.attr.textPrimary, context),
