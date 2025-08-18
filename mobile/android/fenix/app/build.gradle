@@ -655,6 +655,9 @@ dependencies {
     implementation project(':components:lib-dataprotect')
     testImplementation project(':components:support-test-fakes')
 
+    // Module Lilo
+    implementation project(':liloapp:core')
+
     debugImplementation libs.leakcanary
     debugImplementation libs.androidx.compose.ui.tooling
 

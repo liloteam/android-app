@@ -1,4 +1,4 @@
-package org.mozilla.fenix.lilo
+package org.mozilla.fenix
 
 import android.content.Context
 import androidx.core.content.pm.PackageInfoCompat
@@ -16,7 +16,7 @@ class LiSettings {
     }
 
     companion object {
-        fun customizeUserAgent(context: Context, userAgent: String?): String {
+        fun customizedUserAgent(context: Context, userAgent: String?): String {
             val appInfo = LiSettings().getAppInfo(context)
             val appName = appInfo.first
             val appVersion = appInfo.second

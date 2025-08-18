@@ -97,7 +97,7 @@ import org.mozilla.fenix.home.topsites.TopSitesConfigConstants.TOP_SITES_PROVIDE
 import org.mozilla.fenix.home.topsites.TopSitesConfigConstants.TOP_SITES_PROVIDER_MAX_THRESHOLD
 import org.mozilla.fenix.lifecycle.StoreLifecycleObserver
 import org.mozilla.fenix.lifecycle.VisibilityLifecycleObserver
-import org.mozilla.fenix.lilo.LiMain
+import org.mozilla.fenix.lilomodule.LiMain
 import org.mozilla.fenix.nimbus.FxNimbus
 import org.mozilla.fenix.onboarding.MARKETING_CHANNEL_ID
 import org.mozilla.fenix.perf.ApplicationExitInfoMetrics
