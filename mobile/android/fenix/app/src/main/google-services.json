@@ -1,0 +1,49 @@
+{
+  "project_info": {
+    "project_number": "1034496807522",
+    "firebase_url": "https://org-lilo-mobile-android-2020.firebaseio.com",
+    "project_id": "org-lilo-mobile-android-2020",
+    "storage_bucket": "org-lilo-mobile-android-2020.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1034496807522:android:f9831b1148525b37d8b73b",
+        "android_client_info": {
+          "package_name": "org.lilo.mobile.android2020"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAwvY-3ZsJA58K5DdbKAbW7txhOzILavGw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1034496807522:android:fc2e7796c2c77d61d8b73b",
+        "android_client_info": {
+          "package_name": "org.lilo.mobile.android2020.debug"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAwvY-3ZsJA58K5DdbKAbW7txhOzILavGw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

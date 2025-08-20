@@ -23,6 +23,10 @@ plugins {
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.python.envs.plugin)
     alias(libs.plugins.protobuf.plugin)
+
+    //LILO: Add both Analytics and Crashlytics Gradle plugins
+    id 'com.google.gms.google-services'
+    id 'com.google.firebase.crashlytics'
 }
 
 apply plugin: 'com.android.application'
@@ -560,6 +564,11 @@ dependencies {
     implementation libs.thirdparty.sentry
 
     implementation ComponentsDependencies.mozilla_appservices_syncmanager
+
+    //LILO: use both Google Analytics and Crashlytics for Lilo
+    implementation platform('com.google.firebase:firebase-bom:33.0.0')
+    implementation 'com.google.firebase:firebase-analytics'
+    implementation 'com.google.firebase:firebase-crashlytics'
 
     implementation project(':components:compose-awesomebar')
     implementation project(':components:compose-base')

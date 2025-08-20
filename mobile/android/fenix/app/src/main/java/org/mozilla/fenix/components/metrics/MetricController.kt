@@ -61,6 +61,7 @@ import org.mozilla.fenix.GleanMetrics.ProgressiveWebApp
 import org.mozilla.fenix.GleanMetrics.SitePermissions
 import org.mozilla.fenix.GleanMetrics.Sync
 import org.mozilla.fenix.GleanMetrics.SyncedTabs
+import org.mozilla.fenix.lilomodule.components.metrics.LiloReleaseMetricController
 import org.mozilla.fenix.search.awesomebar.ShortcutsSuggestionProvider
 import org.mozilla.fenix.utils.Settings
 import java.util.UUID
@@ -89,7 +90,8 @@ interface MetricController {
             settings: Settings,
         ): MetricController {
             return if (BuildConfig.TELEMETRY) {
-                ReleaseMetricController(
+                //LILO: do not use Glean for the Lilo's metrics
+                LiloReleaseMetricController(
                     services,
                     isDataTelemetryEnabled,
                     isMarketingDataTelemetryEnabled,
