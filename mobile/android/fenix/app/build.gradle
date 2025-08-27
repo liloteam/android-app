@@ -97,6 +97,9 @@ android {
         ]
 
         buildConfigField "String[]", "SUPPORTED_LOCALE_ARRAY", getSupportedLocales()
+
+        //LILO: Keep only English and French resources in the APK/AAB
+        resConfigs "en", "fr"
     }
 
     def releaseTemplate = {
