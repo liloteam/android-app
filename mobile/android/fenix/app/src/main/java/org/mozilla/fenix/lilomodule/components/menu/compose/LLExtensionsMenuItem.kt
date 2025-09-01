@@ -4,7 +4,7 @@ import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.runtime.Composable
 
 @Composable
-public fun LiExtensionsMenuItem(
+public fun LLExtensionsMenuItem(
     isExtensionsProcessDisabled: Boolean,
     isExtensionsExpanded: Boolean,
     isPrivate: Boolean,

@@ -51,7 +51,6 @@ import androidx.compose.ui.semantics.collectionInfo
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.role
 import androidx.compose.ui.semantics.semantics
-import androidx.compose.ui.semantics.stateDescription
 import androidx.compose.ui.semantics.testTag
 import androidx.compose.ui.semantics.testTagsAsResourceId
 import androidx.compose.ui.text.style.TextOverflow
@@ -76,7 +75,7 @@ import org.mozilla.fenix.components.menu.MenuDialogTestTag.DESKTOP_SITE_ON
 import org.mozilla.fenix.components.menu.MenuDialogTestTag.EXTENSIONS
 import org.mozilla.fenix.components.menu.compose.header.MenuNavHeader
 import org.mozilla.fenix.components.menu.store.WebExtensionMenuItem
-import org.mozilla.fenix.lilomodule.components.menu.compose.LiExtensionsMenuItem
+import org.mozilla.fenix.lilomodule.components.menu.compose.LLExtensionsMenuItem
 import org.mozilla.fenix.theme.FirefoxTheme
 import org.mozilla.fenix.theme.Theme
 import org.mozilla.fenix.utils.DURATION_MS_MAIN_MENU_ITEM
@@ -539,7 +538,7 @@ private fun ToolsAndActionsMenuGroup(
         }
 
         //LILO: customize the main menu
-        LiExtensionsMenuItem(
+        LLExtensionsMenuItem(
             isExtensionsProcessDisabled = isExtensionsProcessDisabled,
             isExtensionsExpanded = isExtensionsExpanded,
             isPrivate = isPrivate,

@@ -132,6 +132,7 @@ import org.mozilla.fenix.home.topsites.TopSitesConfigConstants.EBAY_SPONSORED_TI
 import org.mozilla.fenix.home.topsites.getTopSitesConfig
 import org.mozilla.fenix.home.ui.Homepage
 import org.mozilla.fenix.lifecycle.observePrivateModeLock
+import org.mozilla.fenix.lilomodule.home.switchFromHomeToLilo
 import org.mozilla.fenix.messaging.DefaultMessageController
 import org.mozilla.fenix.messaging.FenixMessageSurfaceId
 import org.mozilla.fenix.messaging.MessagingFeature
@@ -821,6 +822,10 @@ class HomeFragment : Fragment() {
         val profilerStartTime = requireComponents.core.engine.profiler?.getProfilerTime()
 
         super.onViewCreated(view, savedInstanceState)
+
+        //LILO: Automatically open Lilo.org and navigate to browser instead of showing Home
+        switchFromHomeToLilo()
+
         HomeScreen.homeScreenDisplayed.record(NoExtras())
 
         with(requireContext()) {

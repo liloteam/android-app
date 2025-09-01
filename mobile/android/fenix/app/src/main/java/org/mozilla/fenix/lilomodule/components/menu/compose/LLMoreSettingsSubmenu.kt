@@ -20,7 +20,7 @@ import org.mozilla.fenix.theme.Theme
 
 @Suppress("LongParameterList")
 @Composable
-internal fun LiMoreSettingsSubmenu(
+internal fun LLMoreSettingsSubmenu(
     isPinned: Boolean,
     isInstallable: Boolean,
     hasExternalApp: Boolean,
@@ -92,7 +92,7 @@ private fun MoreSettingsSubmenuPreview() {
             modifier = Modifier.background(color = FirefoxTheme.colors.layer3),
         ) {
             MenuGroup {
-                LiMoreSettingsSubmenu(
+                LLMoreSettingsSubmenu(
                     isPinned = true,
                     isInstallable = true,
                     hasExternalApp = true,
@@ -128,7 +128,7 @@ private fun MoreSettingsSubmenuPrivatePreview() {
             modifier = Modifier.background(color = FirefoxTheme.colors.layer3),
         ) {
             MenuGroup {
-                LiMoreSettingsSubmenu(
+                LLMoreSettingsSubmenu(
                     isPinned = false,
                     isInstallable = true,
                     hasExternalApp = false,

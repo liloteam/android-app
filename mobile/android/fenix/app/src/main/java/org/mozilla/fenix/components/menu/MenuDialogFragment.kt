@@ -85,7 +85,7 @@ import org.mozilla.fenix.ext.openSetDefaultBrowserOption
 import org.mozilla.fenix.ext.requireComponents
 import org.mozilla.fenix.ext.runIfFragmentIsAttached
 import org.mozilla.fenix.ext.settings
-import org.mozilla.fenix.lilomodule.components.menu.compose.LiMoreSettingsSubmenu
+import org.mozilla.fenix.lilomodule.components.menu.compose.LLMoreSettingsSubmenu
 import org.mozilla.fenix.nimbus.FxNimbus
 import org.mozilla.fenix.settings.SupportUtils
 import org.mozilla.fenix.settings.deletebrowsingdata.deleteAndQuit
@@ -644,7 +644,7 @@ class MenuDialogFragment : BottomSheetDialogFragment() {
                                     },
                                     //LILO: Customize the main menu
                                     moreSettingsSubmenu = {
-                                        LiMoreSettingsSubmenu(
+                                        LLMoreSettingsSubmenu(
                                             isReaderViewActive = isReaderViewActive,
                                             isWebCompatEnabled = isWebCompatEnabled,
                                             isPinned = isPinned,

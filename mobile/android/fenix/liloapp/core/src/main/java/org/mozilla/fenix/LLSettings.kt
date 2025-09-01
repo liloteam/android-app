@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.core.content.pm.PackageInfoCompat
 import mozilla.components.support.utils.ext.getPackageInfoCompat
 
-class LiSettings {
+class LLSettings {
 
     fun getAppInfo(context: Context): Pair<String, String> {
         val appName = context.packageManager.getApplicationLabel(context.applicationInfo).toString()
@@ -17,7 +17,7 @@ class LiSettings {
 
     companion object {
         fun customizedUserAgent(context: Context, userAgent: String?): String {
-            val appInfo = LiSettings().getAppInfo(context)
+            val appInfo = LLSettings().getAppInfo(context)
             val appName = appInfo.first
             val appVersion = appInfo.second
             return "$userAgent $appName/$appVersion"
