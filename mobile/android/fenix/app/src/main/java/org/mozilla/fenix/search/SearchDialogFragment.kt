@@ -98,6 +98,7 @@ import org.mozilla.fenix.ext.requireComponents
 import org.mozilla.fenix.ext.runIfFragmentIsAttached
 import org.mozilla.fenix.ext.secure
 import org.mozilla.fenix.ext.settings
+import org.mozilla.fenix.lilomodule.ext.doNotResizeScreen
 import org.mozilla.fenix.navigation.DefaultNavControllerProvider
 import org.mozilla.fenix.navigation.NavControllerProvider
 import org.mozilla.fenix.nimbus.FxNimbus
@@ -164,6 +165,9 @@ class SearchDialogFragment : AppCompatDialogFragment(), UserInteractionHandler {
         if (childFragmentManager.findFragmentByTag(QR_FRAGMENT_TAG) == null) {
             toolbarView.view.edit.focus()
         }
+
+        //LILO: do not resize the home view behind the search dialog.
+        doNotResizeScreen()
     }
 
     override fun onStop() {
@@ -660,6 +664,9 @@ class SearchDialogFragment : AppCompatDialogFragment(), UserInteractionHandler {
         requireComponents.appStore.dispatch(
             AppAction.SearchAction.SearchEnded,
         )
+
+        //LILO: go back to the last Web tab so that the native home page doesn't remain shown.
+        dismissDialogAndGoBack()
     }
 
     override fun onBackPressed(): Boolean {

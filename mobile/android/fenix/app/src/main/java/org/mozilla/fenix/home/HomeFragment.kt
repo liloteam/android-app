@@ -132,6 +132,7 @@ import org.mozilla.fenix.home.topsites.TopSitesConfigConstants.EBAY_SPONSORED_TI
 import org.mozilla.fenix.home.topsites.getTopSitesConfig
 import org.mozilla.fenix.home.ui.Homepage
 import org.mozilla.fenix.lifecycle.observePrivateModeLock
+import org.mozilla.fenix.lilomodule.home.initMinimalistHomePage
 import org.mozilla.fenix.lilomodule.home.switchFromHomeToLilo
 import org.mozilla.fenix.messaging.DefaultMessageController
 import org.mozilla.fenix.messaging.FenixMessageSurfaceId
@@ -562,7 +563,8 @@ class HomeFragment : Fragment() {
             listenForMicrosurveyMessage(requireContext())
         }
 
-        initComposeHomepage()
+        //LILO: initialize an empty native home page for Lilo
+        initMinimalistHomePage()
 
         disableAppBarDragging()
 
