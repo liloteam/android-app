@@ -214,6 +214,7 @@ import org.mozilla.fenix.ext.updateMicrosurveyPromptForConfigurationChange
 import org.mozilla.fenix.home.HomeScreenViewModel
 import org.mozilla.fenix.library.bookmarks.friendlyRootTitle
 import org.mozilla.fenix.lifecycle.observePrivateModeLock
+import org.mozilla.fenix.lilomodule.LLModule
 import org.mozilla.fenix.messaging.FenixMessageSurfaceId
 import org.mozilla.fenix.messaging.MessagingFeature
 import org.mozilla.fenix.microsurvey.ui.MicrosurveyRequestPrompt
@@ -1364,6 +1365,10 @@ abstract class BaseBrowserFragment :
         FirefoxTheme {
             TabStrip(
                 onAddTabClick = {
+
+                    //LILO: force to add a new tab with the Lilo's home page - Tab bar
+                    LLModule.setShouldAddHomeTab(true)
+
                     findNavController().navigate(
                         NavGraphDirections.actionGlobalHome(
                             focusOnAddressBar = true,

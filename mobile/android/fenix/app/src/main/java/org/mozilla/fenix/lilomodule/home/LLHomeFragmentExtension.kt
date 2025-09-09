@@ -8,6 +8,7 @@ import mozilla.components.browser.state.state.SessionState
 import org.mozilla.fenix.BrowserDirection
 import org.mozilla.fenix.HomeActivity
 import org.mozilla.fenix.LLAppConstants
+import org.mozilla.fenix.LLAppEngine
 import org.mozilla.fenix.ext.requireComponents
 import org.mozilla.fenix.home.HomeFragment
 
@@ -18,9 +19,13 @@ import org.mozilla.fenix.home.HomeFragment
 fun HomeFragment.switchFromHomeToLilo() {
     val homeURL = LLAppConstants.AppURL.HOME.url()
     lifecycleScope.launch {
+        var currentTab: SessionState? = null
         // If no Web page is already displayed in a tab then a new tab is created
         // with the Lilo's home page elsewhere the last tab will be shown.
-        getCurrentTab()?.let {  }?: run {
+        if (!LLAppEngine.shouldAddHomeTab) {
+            currentTab = getCurrentTab()
+        }
+        if (currentTab == null) {
             val tabsUseCases = requireComponents.useCases.tabsUseCases
             val tabId = tabsUseCases.addTab(homeURL.toString(), private = false)
             tabsUseCases.selectTab(tabId)

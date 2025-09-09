@@ -43,6 +43,7 @@ import org.mozilla.fenix.ext.nav
 import org.mozilla.fenix.ext.navigateSafe
 import org.mozilla.fenix.ext.settings
 import org.mozilla.fenix.home.HomeScreenViewModel
+import org.mozilla.fenix.lilomodule.LLModule
 import org.mozilla.fenix.utils.Settings
 
 /**
@@ -197,12 +198,20 @@ class DefaultBrowserToolbarController(
                 }
             }
             is TabCounterMenu.Item.NewTab -> {
+
+                //LILO: force to add a new tab with the Lilo's home page - Tab counter
+                LLModule.setShouldAddHomeTab(true)
+
                 activity.browsingModeManager.mode = BrowsingMode.Normal
                 navController.navigate(
                     BrowserFragmentDirections.actionGlobalHome(focusOnAddressBar = true),
                 )
             }
             is TabCounterMenu.Item.NewPrivateTab -> {
+
+                //LILO: force to add a new tab with the Lilo's home page - Tab counter
+                LLModule.setShouldAddHomeTab(true)
+
                 activity.browsingModeManager.mode = BrowsingMode.Private
                 navController.navigate(
                     BrowserFragmentDirections.actionGlobalHome(focusOnAddressBar = true),
@@ -219,6 +228,9 @@ class DefaultBrowserToolbarController(
 
     override fun handleHomeButtonClick() {
         Events.browserToolbarHomeTapped.record(NoExtras())
+
+        //LILO: force to add a new tab with the Lilo's home page - Home button
+        LLModule.setShouldAddHomeTab(true)
 
         if (settings.enableHomepageAsNewTab) {
             fenixBrowserUseCases.navigateToHomepage()

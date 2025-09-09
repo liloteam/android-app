@@ -59,6 +59,7 @@ import org.mozilla.fenix.utils.Settings
 import java.util.concurrent.TimeUnit
 import kotlin.coroutines.CoroutineContext
 import org.mozilla.fenix.GleanMetrics.Tab as GleanTab
+import org.mozilla.fenix.lilomodule.LLModule
 
 const val INACTIVE_TABS_FEATURE_NAME = "Inactive tabs"
 
@@ -255,6 +256,9 @@ class DefaultTabsTrayController(
     private fun openNewTab(isPrivate: Boolean) {
         val startTime = profiler?.getProfilerTime()
         browsingModeManager.mode = BrowsingMode.fromBoolean(isPrivate)
+
+        //LILO: force to add a new tab with the Lilo's home page - Tabs screen
+        LLModule.setShouldAddHomeTab(true)
 
         if (settings.enableHomepageAsNewTab) {
             fenixBrowserUseCases.addNewHomepageTab(

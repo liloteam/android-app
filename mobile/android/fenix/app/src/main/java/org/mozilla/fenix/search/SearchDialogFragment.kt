@@ -98,6 +98,7 @@ import org.mozilla.fenix.ext.requireComponents
 import org.mozilla.fenix.ext.runIfFragmentIsAttached
 import org.mozilla.fenix.ext.secure
 import org.mozilla.fenix.ext.settings
+import org.mozilla.fenix.lilomodule.LLModule
 import org.mozilla.fenix.lilomodule.ext.doNotResizeScreen
 import org.mozilla.fenix.navigation.DefaultNavControllerProvider
 import org.mozilla.fenix.navigation.NavControllerProvider
@@ -666,7 +667,7 @@ class SearchDialogFragment : AppCompatDialogFragment(), UserInteractionHandler {
         )
 
         //LILO: go back to the last Web tab so that the native home page doesn't remain shown.
-        dismissDialogAndGoBack()
+        LLModule.onDismissSearchDialog { dismissDialogAndGoBack() }
     }
 
     override fun onBackPressed(): Boolean {
