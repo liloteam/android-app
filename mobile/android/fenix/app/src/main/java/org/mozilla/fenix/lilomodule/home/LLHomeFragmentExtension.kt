@@ -25,9 +25,10 @@ fun HomeFragment.switchFromHomeToLilo() {
         if (!LLAppEngine.shouldAddHomeTab) {
             currentTab = getCurrentTab()
         }
+        val isPrivate = requireComponents.appStore.state.mode.isPrivate
         if (currentTab == null) {
             val tabsUseCases = requireComponents.useCases.tabsUseCases
-            val tabId = tabsUseCases.addTab(homeURL.toString(), private = false)
+            val tabId = tabsUseCases.addTab(homeURL.toString(), private = isPrivate)
             tabsUseCases.selectTab(tabId)
         }
 
