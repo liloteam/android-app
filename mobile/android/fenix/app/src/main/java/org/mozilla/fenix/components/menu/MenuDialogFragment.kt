@@ -86,6 +86,7 @@ import org.mozilla.fenix.ext.requireComponents
 import org.mozilla.fenix.ext.runIfFragmentIsAttached
 import org.mozilla.fenix.ext.settings
 import org.mozilla.fenix.lilomodule.components.menu.compose.LLMoreSettingsSubmenu
+import org.mozilla.fenix.lilomodule.LLModule
 import org.mozilla.fenix.nimbus.FxNimbus
 import org.mozilla.fenix.settings.SupportUtils
 import org.mozilla.fenix.settings.deletebrowsingdata.deleteAndQuit
@@ -546,6 +547,10 @@ class MenuDialogFragment : BottomSheetDialogFragment() {
                                     allWebExtensionsDisabled = allWebExtensionsDisabled,
                                     onMozillaAccountButtonClick = {
                                         view?.slideDown {
+                                            //LILO: Go to the Lilo's login page and then close the menu. The Mozilla account code is not executed.
+                                            LLModule.goToLoginPage(this@MenuDialogFragment)
+                                            return@slideDown
+
                                             store.dispatch(
                                                 MenuAction.Navigate.MozillaAccount(
                                                     accountState = accountState,

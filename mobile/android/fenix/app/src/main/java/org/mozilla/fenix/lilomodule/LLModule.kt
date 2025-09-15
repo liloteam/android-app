@@ -1,10 +1,13 @@
 package org.mozilla.fenix.lilomodule
 
 import android.content.Context
+import androidx.fragment.app.Fragment
 import com.google.firebase.analytics.FirebaseAnalytics
 import org.mozilla.fenix.LLAppEngine
+import org.mozilla.fenix.components.menu.MenuDialogFragment
 import org.mozilla.fenix.ext.components
 import org.mozilla.fenix.ext.settings
+import org.mozilla.fenix.lilomodule.components.menu.goToLoginPage
 import org.mozilla.fenix.lilomodule.settings.LLSettings
 
 object LLModule {
@@ -30,6 +33,10 @@ object LLModule {
 
     fun setShouldAddHomeTab(shouldAddHomeTab: Boolean) {
         LLAppEngine.shouldAddHomeTab = shouldAddHomeTab
+    }
+
+    fun goToLoginPage(fragment: Fragment?) {
+        (fragment as? MenuDialogFragment)?.let { it.goToLoginPage() }
     }
 
 }
