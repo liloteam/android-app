@@ -76,6 +76,7 @@ import org.mozilla.fenix.components.menu.MenuDialogTestTag.EXTENSIONS
 import org.mozilla.fenix.components.menu.compose.header.MenuNavHeader
 import org.mozilla.fenix.components.menu.store.WebExtensionMenuItem
 import org.mozilla.fenix.lilomodule.components.menu.compose.LLExtensionsMenuItem
+import org.mozilla.fenix.lilomodule.components.menu.compose.LLNewTabMenuItems
 import org.mozilla.fenix.theme.FirefoxTheme
 import org.mozilla.fenix.theme.Theme
 import org.mozilla.fenix.utils.DURATION_MS_MAIN_MENU_ITEM
@@ -490,6 +491,9 @@ private fun ToolsAndActionsMenuGroup(
             badgeBackgroundColor = FirefoxTheme.colors.layer2
             menuItemState = if (isPdf) MenuItemState.DISABLED else MenuItemState.ENABLED
         }
+
+        //LILO: customize the main menu adding both New tab and New private tab items
+        LLNewTabMenuItems()
 
         if (isBookmarked) {
             MenuItem(
