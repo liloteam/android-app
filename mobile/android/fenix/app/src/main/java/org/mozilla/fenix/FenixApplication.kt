@@ -221,10 +221,10 @@ open class FenixApplication : LocaleAwareApplication(), Provider {
                 components.core.engine.warmUp()
             }
 
+            initializeGlean()
+
             //LILO: Specific initialization for Lilo
             LLModule.initializeLilo(this)
-
-            initializeGlean()
 
             // Attention: Do not invoke any code from a-s in this scope.
             val megazordSetup = finishSetupMegazord()

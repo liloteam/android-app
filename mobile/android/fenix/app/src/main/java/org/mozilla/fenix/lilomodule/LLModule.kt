@@ -10,11 +10,12 @@ import org.mozilla.fenix.components.menu.MenuDialogFragment
 import org.mozilla.fenix.ext.components
 import org.mozilla.fenix.ext.settings
 import org.mozilla.fenix.lilomodule.components.menu.goToLoginPage
+import org.mozilla.fenix.lilomodule.search.LLSearchEngine
 import org.mozilla.fenix.lilomodule.settings.LLSettings
 
 object LLModule {
 
-    val logger = Logger("LLModule")
+    val logger = Logger("LILO:LOG")
 
     fun initializeLilo(context: Context) {
         // Customize the user agent string for Lilo.
@@ -26,6 +27,8 @@ object LLModule {
         val analytics = FirebaseAnalytics.getInstance(context)
         analytics.setAnalyticsCollectionEnabled(context.settings().isTelemetryEnabled)
 
+        // Select the Lilo search engine if not already selected.
+        LLSearchEngine(logger).setupLiloSearchEngine(context)
 
         val settings = LLSettings(context)
         // Force the offer to translate option to be disabled.

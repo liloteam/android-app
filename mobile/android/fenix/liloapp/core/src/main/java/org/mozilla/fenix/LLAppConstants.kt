@@ -6,6 +6,8 @@ object LLAppConstants {
     const val homeHost = "search.lilo.org"
     const val privacyPolicyURL = "https://www.lilo.org/votre-vie-privee-avec-lilo/"
     const val supportURL = "https://support.lilo.org"
+    const val searchURL = "https://search.lilo.org?q=%s"
+    const val suggestURL = "https://www.bing.com/osjson.aspx?query=%s"
 
     enum class Parameter(val queryItem: Pair<String, String>) {
         HOME("t" to "homemobile"),
@@ -54,5 +56,13 @@ object LLAppConstants {
 
             return builder.build()
         }
+    }
+
+    object SearchEngine {
+        const val NAME = "Lilo"
+        const val ICON = ""
+        const val RESULT = searchURL
+        const val SUGGEST = suggestURL
+
     }
 }
