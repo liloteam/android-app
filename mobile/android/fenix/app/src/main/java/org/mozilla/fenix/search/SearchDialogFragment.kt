@@ -465,6 +465,9 @@ class SearchDialogFragment : AppCompatDialogFragment(), UserInteractionHandler {
                     )
             }
 
+            //LILO: hide the learn more link button inside the private tab
+            searchSuggestionHintBinding.learnMore.visibility = View.GONE
+
             searchSuggestionHintBinding.allow.setOnClickListener {
                 inflated.visibility = View.GONE
                 requireContext().settings().also {
