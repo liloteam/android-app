@@ -1,6 +1,8 @@
 package org.mozilla.fenix.lilomodule.search
 
 import android.content.Context
+import androidx.appcompat.content.res.AppCompatResources
+import androidx.core.graphics.drawable.toBitmap
 import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.delay
@@ -11,6 +13,7 @@ import mozilla.components.browser.state.state.selectedOrDefaultSearchEngine
 import mozilla.components.feature.search.ext.createSearchEngine
 import mozilla.components.support.base.log.logger.Logger
 import org.mozilla.fenix.LLAppConstants
+import org.mozilla.fenix.R
 import org.mozilla.fenix.ext.components
 import org.mozilla.fenix.lilomodule.ext.resolveLifecycleOwner
 
@@ -58,11 +61,11 @@ data class LLSearchEngine(
     private fun createLiloSearchEngine(context: Context, block: (SearchEngine?) -> Unit) {
         val searchString = LLAppConstants.SearchEngine.RESULT
         context.resolveLifecycleOwner()?.lifecycleScope?.launch(Main) {
+            val icon = AppCompatResources.getDrawable(context, R.drawable.ic_search)?.toBitmap() ?: context.components.core.icons.loadIcon(IconRequest(searchString)).await().bitmap
             val engine = createSearchEngine(
                 name = LLAppConstants.SearchEngine.NAME,
                 url = LLAppConstants.SearchEngine.RESULT.toSearchUrl(),
-                icon = context.components.core.icons.loadIcon(IconRequest(searchString))
-                    .await().bitmap,
+                icon = icon,
                 suggestUrl = LLAppConstants.SearchEngine.SUGGEST.toSearchUrl(),
                 isGeneral = true
             )

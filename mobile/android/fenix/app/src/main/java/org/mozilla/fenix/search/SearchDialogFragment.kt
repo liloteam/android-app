@@ -100,6 +100,7 @@ import org.mozilla.fenix.ext.secure
 import org.mozilla.fenix.ext.settings
 import org.mozilla.fenix.lilomodule.LLModule
 import org.mozilla.fenix.lilomodule.ext.doNotResizeScreen
+import org.mozilla.fenix.lilomodule.search.toolbar.LLSearchSelectorToolbarAction
 import org.mozilla.fenix.navigation.DefaultNavControllerProvider
 import org.mozilla.fenix.navigation.NavControllerProvider
 import org.mozilla.fenix.nimbus.FxNimbus
@@ -851,7 +852,8 @@ class SearchDialogFragment : AppCompatDialogFragment(), UserInteractionHandler {
         if (searchSelectorAlreadyAdded) return
 
         toolbarView.view.addEditActionStart(
-            SearchSelectorToolbarAction(
+            //LILO: customize the search selector toolbar
+            LLSearchSelectorToolbarAction(
                 store = store,
                 defaultSearchEngine = requireComponents.core.store.state.search.selectedOrDefaultSearchEngine,
                 menu = searchSelectorMenu,
