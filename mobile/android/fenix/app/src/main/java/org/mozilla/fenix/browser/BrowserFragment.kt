@@ -52,6 +52,7 @@ import org.mozilla.fenix.ext.requireComponents
 import org.mozilla.fenix.ext.runIfFragmentIsAttached
 import org.mozilla.fenix.ext.settings
 import org.mozilla.fenix.home.HomeFragment
+import org.mozilla.fenix.lilomodule.LLModule
 import org.mozilla.fenix.nimbus.FxNimbus
 import org.mozilla.fenix.settings.quicksettings.protections.cookiebanners.getCookieBannerUIMode
 import org.mozilla.fenix.shortcut.PwaOnboardingObserver
@@ -144,6 +145,10 @@ class BrowserFragment : BaseBrowserFragment(), UserInteractionHandler {
                 view = view,
             )
         }
+
+        //LILO: Disable the site info button in the browser toolbar.
+        LLModule.initializeLiloBrowser(this)
+
     }
 
     private fun initBrowserToolbarViewActions(rootView: View) {

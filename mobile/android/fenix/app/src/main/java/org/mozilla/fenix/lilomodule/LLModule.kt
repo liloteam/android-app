@@ -6,9 +6,11 @@ import com.google.firebase.analytics.FirebaseAnalytics
 import mozilla.components.support.base.log.logger.Logger
 import org.mozilla.fenix.LLAppEngine
 import org.mozilla.fenix.LLLegacySettingsSharedPreferences
+import org.mozilla.fenix.browser.BrowserFragment
 import org.mozilla.fenix.components.menu.MenuDialogFragment
 import org.mozilla.fenix.ext.components
 import org.mozilla.fenix.ext.settings
+import org.mozilla.fenix.lilomodule.browser.initializeLiloUI
 import org.mozilla.fenix.lilomodule.components.menu.goToLoginPage
 import org.mozilla.fenix.lilomodule.search.LLSearchEngine
 import org.mozilla.fenix.lilomodule.settings.LLSettings
@@ -61,6 +63,10 @@ object LLModule {
 
     fun goToLoginPage(fragment: Fragment?) {
         (fragment as? MenuDialogFragment)?.let { it.goToLoginPage() }
+    }
+
+    fun initializeLiloBrowser(fragment: BrowserFragment) {
+        fragment.initializeLiloUI()
     }
 
 }
