@@ -50,6 +50,7 @@ import mozilla.components.compose.base.menu.MenuItem
 import org.mozilla.fenix.R
 import org.mozilla.fenix.compose.Banner
 import org.mozilla.fenix.compose.BottomSheetHandle
+import org.mozilla.fenix.lilomodule.tabstray.ui.banner.LLTabPageBanner
 import org.mozilla.fenix.tabstray.Page
 import org.mozilla.fenix.tabstray.TabsTrayAction
 import org.mozilla.fenix.tabstray.TabsTrayState
@@ -179,7 +180,8 @@ fun TabsTrayBanner(
                 onShareSelectedTabs = onShareSelectedTabsClick,
             )
         } else {
-            TabPageBanner(
+            //LILO: Do not show the sync tab which is not used by Lilo.
+            LLTabPageBanner(
                 menuItems = menuItems,
                 selectedPage = selectedPage,
                 normalTabCount = normalTabCount,
