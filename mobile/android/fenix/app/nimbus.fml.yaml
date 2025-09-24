@@ -453,7 +453,7 @@ features:
         description: >
           When the feature is enabled then the user will see the new navigation toolbar.
         type: Boolean
-        default: false
+        default: true
     defaults:
       - channel: developer
         value:
@@ -618,7 +618,7 @@ features:
     defaults:
       - channel: release
         value:
-          enabled: false
+          enabled: true
       - channel: release
         value:
           report-site-issue: false
@@ -663,6 +663,9 @@ features:
         value:
           enabled: true
       - channel: beta
+        value:
+          enabled: true
+      - channel: release
         value:
           enabled: true
 
