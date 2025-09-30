@@ -29,30 +29,35 @@ data class LLSearchEngine(
             delay(2000)
 
             val searchState = context.components.core.store.state.search
+            var shouldContinue = true
 
             // If the Lilo search engine is already selected, do nothing.
             searchState.selectedOrDefaultSearchEngine?.let {
                 if (it.name == LLAppConstants.SearchEngine.NAME) {
                     logger.info("$tag: Lilo search engine already selected")
-                    return@launch
+                    shouldContinue = false
                 }
             }
 
-            // If the Lilo search engine already exists, select it.
-            searchState.customSearchEngines.find { it.name == LLAppConstants.SearchEngine.NAME }
-                ?.let { engine ->
-                    logger.info("$tag: Lilo search engine already exists, select it")
-                    context.components.useCases.searchUseCases.selectSearchEngine(engine)
-                    return@launch
-                }
+            if (shouldContinue) {
+                // If the Lilo search engine already exists, select it.
+                searchState.customSearchEngines.find { it.name == LLAppConstants.SearchEngine.NAME }
+                    ?.let { engine ->
+                        logger.info("$tag: Lilo search engine already exists, select it")
+                        context.components.useCases.searchUseCases.selectSearchEngine(engine)
+                        shouldContinue = false
+                    }
+            }
 
-            logger.info("$tag: Lilo search engine has to be created and selected")
-            // If the Lilo search engine doesn't exist, create it and select it.
-            createLiloSearchEngine(context) { engine ->
-                logger.info("$tag: Lilo search engine created with name: ${engine?.name}")
-                engine?.also {
-                    context.components.useCases.searchUseCases.addSearchEngine(it)
-                    context.components.useCases.searchUseCases.selectSearchEngine(it)
+            if (shouldContinue) {
+                logger.info("$tag: Lilo search engine has to be created and selected")
+                // If the Lilo search engine doesn't exist, create it and select it.
+                createLiloSearchEngine(context) { engine ->
+                    logger.info("$tag: Lilo search engine created with name: ${engine?.name}")
+                    engine?.also {
+                        context.components.useCases.searchUseCases.addSearchEngine(it)
+                        context.components.useCases.searchUseCases.selectSearchEngine(it)
+                    }
                 }
             }
         }

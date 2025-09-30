@@ -1,0 +1,54 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'com.google.devtools.ksp'
+
+android {
+    namespace 'mozilla.liloapp.migration'
+
+    defaultConfig {
+        minSdkVersion = config.minSdkVersion
+        compileSdk = config.compileSdkVersion
+        targetSdkVersion = config.targetSdkVersion
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        ksp {
+            arg("room.schemaLocation", "$projectDir/schemas".toString())
+            arg("room.generateKotlin", "true")
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation project(':components:browser-engine-gecko')
+
+    implementation project(':components:browser-state')
+    implementation project(':components:concept-fetch')
+    implementation project(':components:support-ktx')
+    implementation project(':components:support-base')
+    implementation project(':components:support-utils')
+
+    implementation project(':components:support-webextensions')
+
+    implementation libs.androidx.core.ktx
+    implementation libs.androidx.appcompat
+    implementation libs.google.material
+
+    implementation libs.kotlin.coroutines
+
+    implementation libs.androidx.room.runtime
+    ksp libs.androidx.room.compiler
+
+    testImplementation libs.junit4
+    androidTestImplementation libs.androidx.junit
+    androidTestImplementation libs.androidx.espresso.core
+    androidTestImplementation libs.androidx.room.testing
+
+}

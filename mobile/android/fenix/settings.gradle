@@ -75,3 +75,4 @@ projectLocalProperties.each { prop ->
 }
 include ':liloapp:core'
 include ':liloapp:shared'
+include ':liloapp:migration'

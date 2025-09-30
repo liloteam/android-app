@@ -669,6 +669,7 @@ dependencies {
 
     // Module Lilo
     implementation project(':liloapp:core')
+    implementation project(':liloapp:migration')
 
     debugImplementation libs.leakcanary
     debugImplementation libs.androidx.compose.ui.tooling

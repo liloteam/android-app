@@ -1,0 +1,99 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 44,
+    "identityHash": "ae3e1eb973c7bf6d2a9e284da17d260e",
+    "entities": [
+      {
+        "tableName": "tabs",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`tabId` TEXT NOT NULL, `url` TEXT, `title` TEXT, `skipHome` INTEGER NOT NULL, `viewed` INTEGER NOT NULL, `position` INTEGER NOT NULL, `tabPreviewFile` TEXT, `sourceTabId` TEXT, `deletable` INTEGER NOT NULL, PRIMARY KEY(`tabId`), FOREIGN KEY(`sourceTabId`) REFERENCES `tabs`(`tabId`) ON UPDATE SET NULL ON DELETE SET NULL )",
+        "fields": [
+          {
+            "fieldPath": "tabId",
+            "columnName": "tabId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "url",
+            "columnName": "url",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "title",
+            "columnName": "title",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "skipHome",
+            "columnName": "skipHome",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "viewed",
+            "columnName": "viewed",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "position",
+            "columnName": "position",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "tabPreviewFile",
+            "columnName": "tabPreviewFile",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "sourceTabId",
+            "columnName": "sourceTabId",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "deletable",
+            "columnName": "deletable",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "tabId"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_tabs_tabId",
+            "unique": false,
+            "columnNames": [
+              "tabId"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_tabs_tabId` ON `${TABLE_NAME}` (`tabId`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "tabs",
+            "onDelete": "SET NULL",
+            "onUpdate": "SET NULL",
+            "columns": [
+              "sourceTabId"
+            ],
+            "referencedColumns": [
+              "tabId"
+            ]
+          }
+        ]
+      }
+    ],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'ae3e1eb973c7bf6d2a9e284da17d260e')"
+    ]
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "manifest_version": 2,
+  "name": "webstorage",
+  "version": "1.0",
+  "description": "Lilo migration web extension.",
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "web-storage@lilo.org"
+    }
+  },
+  "background": {
+      "scripts": ["web-storage.js"]
+  },
+  "permissions": [
+    "*://*.lilo.org/*",
+    "cookies",
+    "nativeMessaging",
+    "nativeMessagingFromContent",
+    "geckoViewAddons"
+  ]
+}
