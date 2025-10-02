@@ -46,9 +46,4 @@ class MigrationManager(
         }
     }
 
-    fun debugLocalStorage() {
-        LocalStorageHelper(logger, applicationContext).getAll { result ->
-            logger.debug("Local storage: $result")
-        }
-    }
 }

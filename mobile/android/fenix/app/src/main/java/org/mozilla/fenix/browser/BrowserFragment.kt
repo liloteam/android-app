@@ -147,7 +147,7 @@ class BrowserFragment : BaseBrowserFragment(), UserInteractionHandler {
         }
 
         //LILO: Disable the site info button in the browser toolbar.
-        LLModule.initializeLiloBrowser(this)
+        LLModule.initializeLiloBrowser(this, customTabSessionId)
 
     }
 

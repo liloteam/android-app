@@ -2,6 +2,7 @@ package mozilla.liloapp.migration
 
 import mozilla.components.support.base.log.logger.Logger
 import mozilla.liloapp.migration.cookie.CookieModel
+import org.json.JSONObject
 import org.mozilla.gecko.util.ThreadUtils.runOnUiThread
 import org.mozilla.geckoview.GeckoResult
 import org.mozilla.geckoview.GeckoRuntime
@@ -78,6 +79,14 @@ object LLWebStorageFeature {
             val obj = cookie.toJSONObject()
             logger.info("WSFeature: Posting cookie: $obj")
             port.postMessage(obj)
+        }?:run { logger.info("WSFeature: No communication port") }
+    }
+
+    fun postLocalStorageItems(items: Map<String, String>) {
+        communicationPort?.let { port ->
+            logger.info("WSFeature: Posting local storage items: $items")
+            val message = mapOf("type" to "INJECT_LOCALSTORAGE", "items" to items)
+            port.postMessage(JSONObject(message))
         }?:run { logger.info("WSFeature: No communication port") }
     }
 }

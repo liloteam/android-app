@@ -32,23 +32,24 @@ data class LLSettings(
      * if it's the first run and there is a user key then save it and return it such as
      * it can be used to a migration purpose.
      */
-    fun checkForUserKeyIfFirstRun(): String? {
-        var userKey: String? = null
-        val liloSettings = LLSettingsSharedPreferences(context)
-        if (liloSettings.appFirstDate < 0) {
-            liloSettings.appFirstDate = System.currentTimeMillis()
-            val legacySettings = LLLegacySettingsSharedPreferences(context)
-            legacySettings.userKey?.let {
-                liloSettings.userKey = it
-                logger.debug("LILO:DBG:Userkey: User key: $it")
-                userKey = it
-            }?:run {
-                logger.debug("LILO:DBG:Userkey: No user key")
-            }
+    fun checkForLegacyUserKey(): String? {
+        val legacySettings = LLLegacySettingsSharedPreferences(context)
+        return legacySettings.userKey?.let { userKey ->
+            val liloSettings = LLSettingsSharedPreferences(context)
+            liloSettings.userKey = userKey
+            logger.debug("LILO:DBG:Userkey: User key: $userKey")
+            userKey
         }
-        else {
-            logger.debug("LILO:DBG:Userkey: first date: ${liloSettings.appFirstDate}")
-        }
-        return userKey
     }
+
+    val isFirstRun: Boolean
+        get() {
+            val liloSettings = LLSettingsSharedPreferences(context)
+            val currentFirstDate = liloSettings.appFirstDate
+            if (currentFirstDate < 0) {
+                liloSettings.appFirstDate = System.currentTimeMillis()
+                return true
+            }
+            return false
+        }
 }

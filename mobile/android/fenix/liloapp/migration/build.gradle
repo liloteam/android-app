@@ -27,9 +27,14 @@ android {
 }
 
 dependencies {
+
+    // Module Lilo
+    implementation project(':liloapp:core')
+
     implementation project(':components:browser-engine-gecko')
 
     implementation project(':components:browser-state')
+    implementation project(':components:concept-engine')
     implementation project(':components:concept-fetch')
     implementation project(':components:support-ktx')
     implementation project(':components:support-base')
