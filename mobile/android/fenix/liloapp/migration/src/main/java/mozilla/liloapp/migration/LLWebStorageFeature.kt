@@ -9,7 +9,7 @@ import org.mozilla.geckoview.GeckoRuntime
 import org.mozilla.geckoview.WebExtension
 
 object LLWebStorageFeature {
-    val logger = Logger("LILO:LOG:WEB")
+    val logger = Logger("LILO:WSF:")
 
     private const val EXTENSION_LOCATION = "resource://android/assets/webstorage/"
     private const val EXTENSION_ID = "web-storage@lilo.org"
@@ -17,19 +17,29 @@ object LLWebStorageFeature {
 
     private var communicationPort: WebExtension.Port? = null
     var onPortConnected: (() -> Unit)? = null
+    var onSuccessMessage: (() -> Unit)? = null
 
     private val portDelegate = object: WebExtension.PortDelegate {
         override fun onPortMessage(message: Any, port: WebExtension.Port) {
             try {
-                logger.info("WSFeature: Message from extension: $message")
+                logger.info("on port message: $message")
+                val resp = message.toMap()
+                logger.info("on port message, resp: $resp")
+                when (resp["type"]) {
+                    "INJECT_LOCALSTORAGE" -> {
+                        logger.info("on port message, success: ${resp["success"]}")
+                        onSuccessMessage?.invoke()
+                        onSuccessMessage = null
+                    }
+                }
 
             } catch (e: Exception) {
-                logger.error("WSFeature: Error while handling message from extension", e)
+                logger.error("Error while handling message from extension", e)
             }
         }
 
         override fun onDisconnect(port: WebExtension.Port) {
-            logger.info("WSFeature: Extension disconnected")
+            logger.info("WSFeature disconnected")
             if (port == communicationPort) communicationPort = null
         }
     }
@@ -38,7 +48,7 @@ object LLWebStorageFeature {
 
         override fun onConnect(port: WebExtension.Port) {
             super.onConnect(port)
-            logger.info("WSFeature: Extension connected")
+            logger.info("WSFeature connected")
             port.setDelegate(portDelegate)
             communicationPort = port
             onPortConnected?.invoke()
@@ -50,8 +60,7 @@ object LLWebStorageFeature {
             message: Any,
             sender: WebExtension.MessageSender
         ): GeckoResult<Any>? {
-            logger.info("WSFeature: Message from extension with native app: $nativeApp")
-            logger.info("WSFeature: Message from extension: $message")
+            logger.info("on message: $message \n with native app: $nativeApp")
             return super.onMessage(nativeApp, message, sender)
         }
     }
@@ -77,16 +86,43 @@ object LLWebStorageFeature {
     fun postCookie(cookie: CookieModel) {
         communicationPort?.let { port ->
             val obj = cookie.toJSONObject()
-            logger.info("WSFeature: Posting cookie: $obj")
+            logger.info("Posting cookie: $obj")
             port.postMessage(obj)
-        }?:run { logger.info("WSFeature: No communication port") }
+        }?:run { logger.error("Error: No communication port") }
     }
 
-    fun postLocalStorageItems(items: Map<String, String>) {
+    fun postLocalStorageItems(items: Map<String, String>, complete: () -> Unit) {
         communicationPort?.let { port ->
-            logger.info("WSFeature: Posting local storage items: $items")
             val message = mapOf("type" to "INJECT_LOCALSTORAGE", "items" to items)
+            logger.info("Posting local storage items with message: $message")
+            onSuccessMessage = complete
             port.postMessage(JSONObject(message))
-        }?:run { logger.info("WSFeature: No communication port") }
+        }?:run { logger.error("Error: No communication port") }
+    }
+
+}
+
+
+internal fun Any?.toMap(): Map<String, Any> {
+    if (this == null) return emptyMap()
+
+    val cleaned = this.toString()
+        .removePrefix("\"")
+        .removeSuffix("\"")
+        .replace("\\\\", "\\")
+        .replace("\\\"", "\"")
+
+    return try {
+        val json = JSONObject(cleaned)
+        val keys = json.keys()
+        val map = mutableMapOf<String, Any>()
+        while (keys.hasNext()) {
+            val key = keys.next()
+            map[key] = json.get(key)
+        }
+        map
+    } catch (e: Exception) {
+        emptyMap()
     }
 }
+

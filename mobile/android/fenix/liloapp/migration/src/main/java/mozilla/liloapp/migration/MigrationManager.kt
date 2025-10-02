@@ -46,4 +46,11 @@ class MigrationManager(
         }
     }
 
+    /**
+     * Retrieve the local storage items from the Android shared preferences and set them to Gecko.
+     */
+    fun migrateLocalStorageItems(webStorageFeature: LLWebStorageFeature?, items: Map<String, String>, complete: () -> Unit) {
+        webStorageFeature?.postLocalStorageItems(items, complete)
+    }
+
 }

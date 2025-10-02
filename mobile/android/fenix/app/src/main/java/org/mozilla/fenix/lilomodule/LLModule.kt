@@ -8,6 +8,8 @@ import androidx.fragment.app.Fragment
 import com.google.firebase.analytics.FirebaseAnalytics
 import kotlinx.coroutines.flow.distinctUntilChangedBy
 import kotlinx.coroutines.flow.mapNotNull
+import kotlinx.coroutines.flow.takeWhile
+import mozilla.components.browser.state.action.EngineAction
 import mozilla.components.browser.state.selector.findTab
 import mozilla.components.browser.state.selector.findTabOrCustomTabOrSelectedTab
 import mozilla.components.browser.state.selector.selectedTab
@@ -35,26 +37,23 @@ import org.mozilla.fenix.lilomodule.search.LLSearchEngine
 import org.mozilla.fenix.lilomodule.settings.LLSettings
 
 object LLModule {
-    val logger = Logger("LILO:LOG")
+    private val logger = Logger("LILO:MODULE")
+    private val shouldForceMigration = true
+
+    private var localStorageSaved = false
+    private var shouldDoMigration = false
 
     private var webStorageFeature: LLWebStorageFeature? = null
 
+
     fun initializeLilo(context: Context) {
+        val settings = LLSettings(context)
+        shouldDoMigration = settings.isFirstRun || shouldForceMigration
+
         // Customize the user agent string for Lilo.
         val engineSettings = context.components.core.engine.settings
         context.components.core.engine.settings.userAgentString =
             LLAppEngine.customizedUserAgent(context, engineSettings.userAgentString)
-
-        if (webStorageFeature == null) {
-            val runtime = context.components.core.geckoRuntime
-            val webStorage = LLWebStorageFeature.install(runtime) {
-                logger.info("WSFeature: Port connected")
-                val migrationManager = MigrationManager(context)
-                logger.info("LILO:DBG: Look for cookies...")
-                migrationManager.migrateAllCookies(webStorageFeature)
-            }
-            webStorageFeature = webStorage
-        }
 
         // Enable Firebase Analytics according to the user's preference.
         val analytics = FirebaseAnalytics.getInstance(context)
@@ -63,11 +62,24 @@ object LLModule {
         // Select the Lilo search engine if not already selected.
         LLSearchEngine(logger).setupLiloSearchEngine(context)
 
-        val settings = LLSettings(context)
         // Force the offer to translate option to be disabled.
         settings.updateOfferTranslationOption(false)
 
-        if (settings.isFirstRun) {
+        // Cookies migration
+        if (shouldDoMigration) {
+            // Initialize the web storage feature and migration the cookies while the extension is connected.
+            if (webStorageFeature == null) {
+                val runtime = context.components.core.geckoRuntime
+                val webStorage = LLWebStorageFeature.install(runtime) {
+                    logger.info("WSFeature: Port connected")
+                    migrateCookies(context)
+                }
+                webStorageFeature = webStorage
+            }
+        }
+
+        // User key migration
+        if (shouldDoMigration) {
             // Check if it's the first run of the app and if so, check if there is a user key
             // for migration.
             settings.checkForLegacyUserKey()?.let {
@@ -82,15 +94,18 @@ object LLModule {
             }
         }
 
-        if (true || settings.isFirstRun) {
+        // Local storage migration
+        if (shouldDoMigration) {
             (context as? FenixApplication)?.let { app ->
                 readLocalStorage(app)
             }
         }
 
-        logger.info("LILO:DBG: Lilo initializing - restoring tabs if any")
-        val migrationManager = MigrationManager(context)
-        migrationManager.restoreTabs()
+        // Tabs migration
+        if (shouldDoMigration) {
+            val migrationManager = MigrationManager(context)
+            migrationManager.restoreTabs()
+        }
 
     }
 
@@ -109,7 +124,9 @@ object LLModule {
     fun initializeLiloBrowser(fragment: BrowserFragment, sessionId: String?) {
         fragment.initializeLiloUI()
 
-        observePageLoadForLocalStorage(fragment, sessionId)
+        if (shouldDoMigration) {
+            observePageLoadForLocalStorage(fragment, sessionId)
+        }
     }
 
     /**
@@ -126,9 +143,17 @@ object LLModule {
         }
     }
 
+    private fun migrateCookies(context: Context) {
+        val migrationManager = MigrationManager(context)
+        logger.info("LILO:DBG: Look for cookies...")
+        migrationManager.migrateAllCookies(webStorageFeature)
+    }
+
     private fun observePageLoadForLocalStorage(fragment: BrowserFragment, sessionId: String?) {
 
-        getLocalStorageRecords()?.let { records ->
+        logger.info("LocalStorage: Observing page load...")
+        if (shouldDoMigration && !localStorageSaved) {
+
             // If the current url doesn't match with the target url then do nothing
             val currentUrl = fragment.requireContext().components.core.store.state.selectedTab?.content?.url
             logger.debug("currentUrl: $currentUrl")
@@ -138,18 +163,34 @@ object LLModule {
 
             // Observe the progress loading to be done
             val store = fragment.requireContext().components.core.store
-
             store.flowScoped(fragment.viewLifecycleOwner) { flow ->
                 flow.mapNotNull { state -> state.findTabOrCustomTabOrSelectedTab(sessionId) }
                     .distinctUntilChangedBy { tab -> tab.content.progress }
+                    .takeWhile { tab ->
+                        val condition = tab.content.progress == 100 && isTargetUrl(tab.content.url, LLAppConstants.homeHost)
+                        if (condition) {
+                            logger.debug("Page finished loading: ${tab.content.url}")
+
+                            // When the page is fully loaded, migrate the local storage items if they exist.
+                            getLocalStorageRecords()?.let { records ->
+                                MigrationManager(fragment.requireContext()).migrateLocalStorageItems(
+                                    webStorageFeature,
+                                    records
+                                ) {
+                                    localStorageSaved = true // Only save once
+                                    cleanLocalStorageRecords()
+                                }
+                            }
+                        }
+
+                        // When the condition is met, return false to stop observing
+                        !condition
+                    }
                     .collect { tab ->
                         logger.debug("progress: ${tab.content.progress} - ${tab.content.url}")
-                        if (tab.content.progress == 100 && isTargetUrl(tab.content.url, LLAppConstants.homeHost)) {
-                            logger.debug("Page finished loading: ${tab.content.url}")
-                            setGeckoLocalStorageItems(records, store, tab)
-                        }
                     }
             }
+
         }
     }
 
