@@ -88,6 +88,13 @@ class AccountUiView(
             preferenceFirefoxAccountAuthError.isVisible = false
             accountPreferenceCategory.isVisible = false
         }
+
+        //LILO: Never display the sync banner in the parameters menu.
+        preferenceSignIn.isVisible = false
+        preferenceFirefoxAccount.isVisible = false
+        preferenceFirefoxAccountAuthError.isVisible = false
+        accountPreferenceCategory.isVisible = false
+
     }
 
     /**
