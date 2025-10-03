@@ -347,6 +347,10 @@ android.applicationVariants.configureEach { variant ->
                 output.versionNameOverride = versionName
             }
             output.versionCodeOverride = versionCodeOverride
+
+            //LILO
+            output.versionCodeOverride = 10029000
+            output.versionNameOverride = "1.2.9"
         }
     } else if (gradle.hasProperty("localProperties.branchBuild.fenix.version")) {
         def versionName = gradle.getProperty("localProperties.branchBuild.fenix.version")
