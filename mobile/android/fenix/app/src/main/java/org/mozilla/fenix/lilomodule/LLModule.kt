@@ -74,8 +74,14 @@ object LLModule {
         // Do not show the onboarding if the app is updated from a previous ddg version.
         if (settings.isDdgUpdate) { context.components.fenixOnboarding.finish() }
 
-        shouldShowWebIntro = isFirstRun || !settings.isDdgUpdate
+        // Define if the intro Lilo Web page should be shown.
+        shouldShowWebIntro = isFirstRun && !settings.isDdgUpdate
+
+        // TEMPORARY: Never show the onboarding.
+        // TODO: Must to be removed when the onboarding is fully implemented.
+        context.components.fenixOnboarding.finish()
     }
+    
 
     val homeUrl: Uri?
         get() {
@@ -83,6 +89,7 @@ object LLModule {
             if (shouldShowWebIntro) {
                 shouldShowWebIntro = false
             }
+            logger.info("Home URL: $home")
             return home
         }
 
