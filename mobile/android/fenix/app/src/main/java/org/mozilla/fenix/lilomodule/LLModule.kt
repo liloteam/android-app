@@ -2,6 +2,7 @@ package org.mozilla.fenix.lilomodule
 
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.os.Handler
 import android.os.Looper
 import androidx.fragment.app.Fragment
@@ -38,17 +39,19 @@ import org.mozilla.fenix.lilomodule.settings.LLSettings
 
 object LLModule {
     private val logger = Logger("LILO:MODULE")
-    private val shouldForceMigration = true
+    private val shouldForceMigration = false // For debug purpose: set to true to force the migration process starting the app
 
     private var localStorageSaved = false
     private var shouldDoMigration = false
+    private var shouldShowWebIntro = false
 
     private var webStorageFeature: LLWebStorageFeature? = null
 
 
     fun initializeLilo(context: Context) {
         val settings = LLSettings(context)
-        shouldDoMigration = settings.isFirstRun || shouldForceMigration
+        val isFirstRun = settings.isFirstRun
+        shouldDoMigration = settings.isDdgUpdate && (isFirstRun || shouldForceMigration)
 
         // Customize the user agent string for Lilo.
         val engineSettings = context.components.core.engine.settings
@@ -65,6 +68,45 @@ object LLModule {
         // Force the offer to translate option to be disabled.
         settings.updateOfferTranslationOption(false)
 
+        // Start the migration process if necessary.
+        startMigration(context, settings)
+
+        // Do not show the onboarding if the app is updated from a previous ddg version.
+        if (settings.isDdgUpdate) { context.components.fenixOnboarding.finish() }
+
+        shouldShowWebIntro = isFirstRun || !settings.isDdgUpdate
+    }
+
+    val homeUrl: Uri?
+        get() {
+            val home = LLAppConstants.AppURL.HOME.url(shouldShowWebIntro)
+            if (shouldShowWebIntro) {
+                shouldShowWebIntro = false
+            }
+            return home
+        }
+
+    fun onDismissSearchDialog(dismiss: (() -> Unit)?) {
+        dismiss?.invoke()
+    }
+
+    fun setShouldAddHomeTab(shouldAddHomeTab: Boolean) {
+        LLAppEngine.shouldAddHomeTab = shouldAddHomeTab
+    }
+
+    fun goToLoginPage(fragment: Fragment?) {
+        (fragment as? MenuDialogFragment)?.let { it.goToLoginPage() }
+    }
+
+    fun initializeLiloBrowser(fragment: BrowserFragment, sessionId: String?) {
+        fragment.initializeLiloUI()
+
+        if (shouldDoMigration) {
+            observePageLoadForLocalStorage(fragment, sessionId)
+        }
+    }
+
+    private fun startMigration(context: Context, settings: LLSettings) {
         // Cookies migration
         if (shouldDoMigration) {
             // Initialize the web storage feature and migration the cookies while the extension is connected.
@@ -106,28 +148,8 @@ object LLModule {
             val migrationManager = MigrationManager(context)
             migrationManager.restoreTabs()
         }
-
     }
 
-    fun onDismissSearchDialog(dismiss: (() -> Unit)?) {
-        dismiss?.invoke()
-    }
-
-    fun setShouldAddHomeTab(shouldAddHomeTab: Boolean) {
-        LLAppEngine.shouldAddHomeTab = shouldAddHomeTab
-    }
-
-    fun goToLoginPage(fragment: Fragment?) {
-        (fragment as? MenuDialogFragment)?.let { it.goToLoginPage() }
-    }
-
-    fun initializeLiloBrowser(fragment: BrowserFragment, sessionId: String?) {
-        fragment.initializeLiloUI()
-
-        if (shouldDoMigration) {
-            observePageLoadForLocalStorage(fragment, sessionId)
-        }
-    }
 
     /**
      * Read the local storage of the Android Webview.

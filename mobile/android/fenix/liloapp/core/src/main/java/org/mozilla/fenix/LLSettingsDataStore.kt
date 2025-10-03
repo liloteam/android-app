@@ -44,6 +44,9 @@ class LLLegacySettingsSharedPreferences (
     private val preferences: SharedPreferences
         get() = context.getSharedPreferences(FILENAME, Context.MODE_PRIVATE)
 
+    val hasKeys: Boolean
+        get() = preferences.all.isNotEmpty()
+
     override var userKey: String?
         get() = preferences.getString(KEY_USER_KEY_STRING, null)
         set(value) = preferences.edit { putString(KEY_USER_KEY_STRING, value) }

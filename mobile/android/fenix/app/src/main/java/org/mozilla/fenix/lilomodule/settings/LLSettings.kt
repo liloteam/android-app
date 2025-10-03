@@ -15,6 +15,14 @@ data class LLSettings(
 ) {
     private val logger = Logger("LLSettings")
 
+    private val legacySettings by lazy {
+        LLLegacySettingsSharedPreferences(context)
+    }
+
+    private val liloSettings by lazy {
+        LLSettingsSharedPreferences(context)
+    }
+
     fun updateOfferTranslationOption(enabled: Boolean) {
         val browserStore = context.components.core.store
         browserStore.dispatch(
@@ -33,9 +41,7 @@ data class LLSettings(
      * it can be used to a migration purpose.
      */
     fun checkForLegacyUserKey(): String? {
-        val legacySettings = LLLegacySettingsSharedPreferences(context)
         return legacySettings.userKey?.let { userKey ->
-            val liloSettings = LLSettingsSharedPreferences(context)
             liloSettings.userKey = userKey
             logger.debug("LILO:DBG:Userkey: User key: $userKey")
             userKey
@@ -44,7 +50,6 @@ data class LLSettings(
 
     val isFirstRun: Boolean
         get() {
-            val liloSettings = LLSettingsSharedPreferences(context)
             val currentFirstDate = liloSettings.appFirstDate
             if (currentFirstDate < 0) {
                 liloSettings.appFirstDate = System.currentTimeMillis()
@@ -52,4 +57,7 @@ data class LLSettings(
             }
             return false
         }
+
+    val isDdgUpdate: Boolean
+        get() = legacySettings.hasKeys
 }

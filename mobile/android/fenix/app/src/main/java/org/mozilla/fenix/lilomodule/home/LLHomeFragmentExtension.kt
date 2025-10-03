@@ -11,13 +11,14 @@ import org.mozilla.fenix.LLAppConstants
 import org.mozilla.fenix.LLAppEngine
 import org.mozilla.fenix.ext.requireComponents
 import org.mozilla.fenix.home.HomeFragment
+import org.mozilla.fenix.lilomodule.LLModule
 
 /**
  * Switch from Home to Lilo or the last current tab if it exists.
  * A new tab is added only if needed.
  */
 fun HomeFragment.switchFromHomeToLilo() {
-    val homeURL = LLAppConstants.AppURL.HOME.url()
+    val homeURL = LLModule.homeUrl
     lifecycleScope.launch {
         var currentTab: SessionState? = null
         // If no Web page is already displayed in a tab then a new tab is created
