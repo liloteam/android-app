@@ -322,7 +322,17 @@ android.applicationVariants.configureEach { variant ->
     project.logger.debug("Flavor:            " + variant.flavorName)
     project.logger.debug("Telemetry enabled: " + !isDebug)
 
-    if (useReleaseVersioning) {
+    //LILO: use Lilo versioning in release mode.
+    if (variant.buildType.name == 'release') {
+        variant.outputs.each { output ->
+            output.versionCodeOverride = variant.versionCode // 10029000
+            output.versionNameOverride = variant.versionName// "1.2.9"
+            println "LILO:GRADLE: Variant name: ${variant.name} - output name: ${output.name}"
+            println " - Output version code override: ${output.versionCodeOverride}"
+            println " - Output version name override: ${output.versionNameOverride}"
+        }
+    }
+    else if (useReleaseVersioning) {
         // The Google Play Store does not allow multiple APKs for the same app that all have the
         // same version code. Therefore we need to have different version codes for our ARM and x86
         // builds.
@@ -348,9 +358,6 @@ android.applicationVariants.configureEach { variant ->
             }
             output.versionCodeOverride = versionCodeOverride
 
-            //LILO
-            output.versionCodeOverride = 10029000
-            output.versionNameOverride = "1.2.9"
         }
     } else if (gradle.hasProperty("localProperties.branchBuild.fenix.version")) {
         def versionName = gradle.getProperty("localProperties.branchBuild.fenix.version")
