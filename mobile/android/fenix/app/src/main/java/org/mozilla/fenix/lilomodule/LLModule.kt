@@ -5,6 +5,7 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Handler
 import android.os.Looper
+import androidx.core.content.edit
 import androidx.fragment.app.Fragment
 import com.google.firebase.analytics.FirebaseAnalytics
 import kotlinx.coroutines.flow.distinctUntilChangedBy
@@ -28,9 +29,11 @@ import mozilla.liloapp.migration.localstorage.LocalStorageHelper
 import org.mozilla.fenix.FenixApplication
 import org.mozilla.fenix.LLAppConstants
 import org.mozilla.fenix.LLAppEngine
+import org.mozilla.fenix.R
 import org.mozilla.fenix.browser.BrowserFragment
 import org.mozilla.fenix.components.menu.MenuDialogFragment
 import org.mozilla.fenix.ext.components
+import org.mozilla.fenix.ext.getPreferenceKey
 import org.mozilla.fenix.ext.settings
 import org.mozilla.fenix.lilomodule.browser.initializeLiloUI
 import org.mozilla.fenix.lilomodule.components.menu.goToLoginPage
@@ -80,6 +83,12 @@ object LLModule {
         // TEMPORARY: Never show the onboarding.
         // TODO: Must to be removed when the onboarding is fully implemented.
         context.components.fenixOnboarding.finish()
+
+        // Configure the search menu.
+        configureSearchMenu(context)
+
+        // Configure observers of both activity and fragment lifecycles.
+        configureObservers(context)
     }
     
 
@@ -239,10 +248,28 @@ object LLModule {
         return store.state.findTab(tab.id)?.engineState?.engineSession
     }
 
+    private fun configureSearchMenu(context: Context) {
+        val prefs = context.settings().preferences
+        prefs.edit {
+            putBoolean(context.getPreferenceKey(R.string.pref_key_search_browsing_history), false)
+            putBoolean(context.getPreferenceKey(R.string.pref_key_search_bookmarks), false)
+            putBoolean(context.getPreferenceKey(R.string.pref_key_search_synced_tabs), false)
+            putBoolean(context.getPreferenceKey(R.string.pref_key_show_sponsored_suggestions), false)
+            putBoolean(context.getPreferenceKey(R.string.pref_key_show_voice_search), false)
+        }
+
+    }
+
     private fun setGeckoLocalStorageItems(items: Map<String, String>, store: BrowserStore, tab: SessionState) {
         getEngineSessionForTab(store, tab)?.let { session ->
             val localStorage = LocalStorageHelper(logger)
             localStorage.setGeckoLocalStorageItems(session, items)
+        }
+    }
+
+    private fun configureObservers(context: Context) {
+        (context as? FenixApplication)?.let { app ->
+            context.registerActivityLifecycleCallbacks(LLActivityObserver())
         }
     }
 }

@@ -54,6 +54,7 @@ import org.mozilla.fenix.compose.InfoCard
 import org.mozilla.fenix.compose.InfoType
 import org.mozilla.fenix.compose.LinkText
 import org.mozilla.fenix.compose.LinkTextState
+import org.mozilla.fenix.lilomodule.translations.preferences.downloadlanguages.LLDownloadLanguagesHeaderPreference
 import org.mozilla.fenix.theme.FirefoxTheme
 import org.mozilla.fenix.translations.DownloadIconIndicator
 import org.mozilla.fenix.translations.DownloadInProgressIndicator
@@ -138,7 +139,8 @@ fun DownloadLanguagesPreference(
     ) {
         LazyColumn {
             item {
-                DownloadLanguagesHeaderPreference(
+                //LILO: The More link in the header has to been removed.
+                LLDownloadLanguagesHeaderPreference(
                     learnMoreUrl = learnMoreUrl,
                     onLearnMoreClicked = onLearnMoreClicked,
                 )
