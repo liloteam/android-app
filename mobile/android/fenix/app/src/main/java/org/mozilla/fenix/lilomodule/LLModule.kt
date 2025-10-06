@@ -251,11 +251,17 @@ object LLModule {
     private fun configureSearchMenu(context: Context) {
         val prefs = context.settings().preferences
         prefs.edit {
+            // Search menu
             putBoolean(context.getPreferenceKey(R.string.pref_key_search_browsing_history), false)
             putBoolean(context.getPreferenceKey(R.string.pref_key_search_bookmarks), false)
             putBoolean(context.getPreferenceKey(R.string.pref_key_search_synced_tabs), false)
             putBoolean(context.getPreferenceKey(R.string.pref_key_show_sponsored_suggestions), false)
             putBoolean(context.getPreferenceKey(R.string.pref_key_show_voice_search), false)
+
+            // Privacy and security menu
+            putBoolean(context.getPreferenceKey(R.string.pref_key_tracking_protection), false)
+            putBoolean(context.getPreferenceKey(R.string.pref_key_delete_browsing_data_on_quit), false)
+            putBoolean(context.getPreferenceKey(R.string.pref_key_cookie_banner_private_mode), false)
         }
 
     }
