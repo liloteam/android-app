@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.preference.Preference
+import androidx.preference.PreferenceCategory
 import androidx.preference.SwitchPreference
 import mozilla.components.support.base.log.logger.Logger
 import org.mozilla.fenix.R
@@ -26,6 +27,9 @@ class LLFragmentObserver : FragmentManager.FragmentLifecycleCallbacks() {
      *  - Settings fragment - Privacy and security section
      *      -> hide private browsing, https only, tracking protection, delete browsing data on quit, notifications
      *      -> hide the cookie banner private mode option which is shown when browsing protection is changed.
+     *  - Settings fragment - Advanced
+     *      -> hide Advanced section
+     *      -> hide addons, link sharing, open links in apps, downloads, leakcanary, and remote debugging
      */
     override fun onFragmentCreated(
         fm: FragmentManager,
@@ -49,6 +53,15 @@ class LLFragmentObserver : FragmentManager.FragmentLifecycleCallbacks() {
                 f.requirePreference<Preference>(R.string.pref_key_delete_browsing_data_on_quit_preference).isVisible = false
                 f.requirePreference<Preference>(R.string.pref_key_notifications).isVisible = false
                 f.requirePreference<SwitchPreference>(R.string.pref_key_cookie_banner_private_mode).isVisible = false
+
+                // Advanced menu
+                f.requirePreference<Preference>(R.string.pref_key_advanced).isVisible = false
+                f.requirePreference<Preference>(R.string.pref_key_addons).isVisible = false
+                f.requirePreference<Preference>(R.string.pref_key_link_sharing).isVisible = false
+                f.requirePreference<Preference>(R.string.pref_key_open_links_in_apps).isVisible = false
+                f.requirePreference<Preference>(R.string.pref_key_downloads).isVisible = false
+                f.requirePreference<Preference>(R.string.pref_key_leakcanary).isVisible = false
+                f.requirePreference<SwitchPreference>(R.string.pref_key_remote_debugging).isVisible = false
             }
             is DownloadLanguagesPreferenceFragment -> {
                 logger.debug("Download Languages Preferences fragment created")
@@ -60,6 +73,8 @@ class LLFragmentObserver : FragmentManager.FragmentLifecycleCallbacks() {
      * Called when a fragment is resumed.
      *  - Settings fragment - Privacy and security section
      *      -> hide the cookie banner private mode option which is shown when browsing protection is changed.
+     *  - Settings fragment - Advanced
+     *      -> link sharing and remote debugging
      */
     override fun onFragmentResumed(fm: FragmentManager, f: Fragment) {
         super.onFragmentResumed(fm, f)
@@ -76,6 +91,10 @@ class LLFragmentObserver : FragmentManager.FragmentLifecycleCallbacks() {
                         false
                     )
                 }
+
+                //Advanced menu
+                f.requirePreference<Preference>(R.string.pref_key_link_sharing).isVisible = false
+                f.requirePreference<SwitchPreference>(R.string.pref_key_remote_debugging).isVisible = false
             }
         }
     }
