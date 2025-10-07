@@ -8,6 +8,7 @@ object LLAppConstants {
     const val supportURL = "https://support.lilo.org"
     const val searchURL = "https://search.lilo.org?q=%s"
     const val suggestURL = "https://www.bing.com/osjson.aspx?query=%s"
+    const val aboutURL = "www.lilo.org"
 
     enum class Parameter(val queryItem: Pair<String, String>) {
         HOME("t" to "homemobile"),
@@ -16,17 +17,20 @@ object LLAppConstants {
     }
 
     enum class Path(val path: String) {
-        MY_ACCOUNT("/mon-compte")
+        MY_ACCOUNT("/mon-compte"),
+        ABOUT("/qui-est-lilo")
     }
 
     enum class AppURL {
         HOME,
         LOGIN,
-        CONNECTION;
+        CONNECTION,
+        ABOUT;
 
         fun url(isFirst: Boolean = false): Uri? {
             val params = mutableListOf<Parameter>()
             var path: String? = null
+            var baseURL: String = homeHost
 
             when (this) {
                 HOME -> {
@@ -38,9 +42,13 @@ object LLAppConstants {
                 CONNECTION -> {
                     path = Path.MY_ACCOUNT.path
                 }
+                ABOUT -> {
+                    baseURL = aboutURL
+                    path = Path.ABOUT.path
+                }
             }
 
-            return buildURL(LLAppConstants.homeHost, path, params)
+            return buildURL(baseURL, path, params)
         }
 
         private fun buildURL(host: String, path: String?, parameters: List<Parameter>): Uri? {
