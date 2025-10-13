@@ -15,6 +15,7 @@ import org.mozilla.fenix.BuildConfig
 import org.mozilla.fenix.IntentReceiverActivity
 import org.mozilla.fenix.R
 import org.mozilla.fenix.customtabs.EXTRA_IS_SANDBOX_CUSTOM_TAB
+import org.mozilla.fenix.lilomodule.LLModule
 import org.mozilla.fenix.settings.account.AuthIntentReceiverActivity
 import java.io.UnsupportedEncodingException
 import java.net.URLEncoder
@@ -25,11 +26,12 @@ object SupportUtils {
     const val WIKIPEDIA_URL = "https://www.wikipedia.org/"
     const val FENIX_PLAY_STORE_URL = "https://play.google.com/store/apps/details?id=${BuildConfig.APPLICATION_ID}"
     const val GOOGLE_URL = "https://www.google.com/"
-    const val GOOGLE_US_URL = "https://www.google.com/webhp?client=firefox-b-1-m&channel=ts"
-    const val GOOGLE_XX_URL = "https://www.google.com/webhp?client=firefox-b-m&channel=ts"
-    const val WHATS_NEW_URL = "https://www.mozilla.org/firefox/android/notes"
-    const val FXACCOUNT_SUMO_URL = "https://support.mozilla.org/kb/access-mozilla-services-firefox-account"
-    const val ANDROID_SUPPORT_SUMO_URL = "mzl.la/AndroidSupport"
+    //LILO: return the Lilo URLs
+    val GOOGLE_US_URL = LLModule.LLSupportUtils.getLiloUrl(LLModule.LLSupportUtils.URLType.GOOGLE_URL)//"https://www.google.com/webhp?client=firefox-b-1-m&channel=ts"
+    val GOOGLE_XX_URL = LLModule.LLSupportUtils.getLiloUrl(LLModule.LLSupportUtils.URLType.GOOGLE_URL)//"https://www.google.com/webhp?client=firefox-b-m&channel=ts"
+    val WHATS_NEW_URL = LLModule.LLSupportUtils.getLiloUrl(LLModule.LLSupportUtils.URLType.FAQ)//"https://www.mozilla.org/firefox/android/notes"
+    val FXACCOUNT_SUMO_URL = LLModule.LLSupportUtils.getLiloUrl(LLModule.LLSupportUtils.URLType.SUPPORT)//"https://support.mozilla.org/kb/access-mozilla-services-firefox-account"
+    val ANDROID_SUPPORT_SUMO_URL = LLModule.LLSupportUtils.getLiloUrl(LLModule.LLSupportUtils.URLType.SUPPORT)//"mzl.la/AndroidSupport"
 
     // This is locale-less on purpose so that the content negotiation happens on the AMO side because the current
     // user language might not be supported by AMO and/or the language might not be exactly what AMO is expecting
@@ -88,7 +90,9 @@ object SupportUtils {
         val appVersion = context.appVersionName.replace(" ", "")
         val osTarget = "Android"
         val langTag = getLanguageTag(locale)
-        return "https://support.mozilla.org/1/mobile/$appVersion/$osTarget/$langTag/$escapedTopic"
+        //LILO: return the Lilo support URL
+        return LLModule.LLSupportUtils.getLiloUrl(LLModule.LLSupportUtils.URLType.SUPPORT)
+        //return "https://support.mozilla.org/1/mobile/$appVersion/$osTarget/$langTag/$escapedTopic"
     }
 
     /**
@@ -98,13 +102,17 @@ object SupportUtils {
     fun getGenericSumoURLForTopic(topic: SumoTopic, locale: Locale = Locale.getDefault()): String {
         val escapedTopic = getEncodedTopicUTF8(topic.topicStr)
         val langTag = getLanguageTag(locale)
-        return "https://support.mozilla.org/$langTag/kb/$escapedTopic"
+        //LILO: return the Lilo support URL
+        return LLModule.LLSupportUtils.getLiloUrl(LLModule.LLSupportUtils.URLType.SUPPORT)
+        //return "https://support.mozilla.org/$langTag/kb/$escapedTopic"
     }
 
     fun getMozillaPageUrl(page: MozillaPage, locale: Locale = Locale.getDefault()): String {
         val path = page.path
         val langTag = getLanguageTag(locale)
-        return "https://www.mozilla.org/$langTag/$path"
+        //LILO: return the Lilo FAQ URL
+        return LLModule.LLSupportUtils.getLiloUrl(page)
+        //return "https://www.mozilla.org/$langTag/$path"
     }
 
     fun createCustomTabIntent(context: Context, url: String): Intent = CustomTabsIntent.Builder()

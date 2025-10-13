@@ -11,12 +11,10 @@ import com.google.firebase.analytics.FirebaseAnalytics
 import kotlinx.coroutines.flow.distinctUntilChangedBy
 import kotlinx.coroutines.flow.mapNotNull
 import kotlinx.coroutines.flow.takeWhile
-import mozilla.components.browser.state.action.EngineAction
 import mozilla.components.browser.state.selector.findTab
 import mozilla.components.browser.state.selector.findTabOrCustomTabOrSelectedTab
 import mozilla.components.browser.state.selector.selectedTab
 import mozilla.components.browser.state.state.SessionState
-import mozilla.components.browser.state.state.TabSessionState
 import mozilla.components.browser.state.store.BrowserStore
 import mozilla.components.concept.engine.EngineSession
 import mozilla.components.lib.state.ext.flowScoped
@@ -39,6 +37,7 @@ import org.mozilla.fenix.lilomodule.browser.initializeLiloUI
 import org.mozilla.fenix.lilomodule.components.menu.goToLoginPage
 import org.mozilla.fenix.lilomodule.search.LLSearchEngine
 import org.mozilla.fenix.lilomodule.settings.LLSettings
+import org.mozilla.fenix.settings.SupportUtils
 
 object LLModule {
     private val logger = Logger("LILO:MODULE")
@@ -82,7 +81,7 @@ object LLModule {
 
         // TEMPORARY: Never show the onboarding.
         // TODO: Must to be removed when the onboarding is fully implemented.
-        context.components.fenixOnboarding.finish()
+        //context.components.fenixOnboarding.finish()
 
         // Configure the search menu.
         configureSearchMenu(context)
@@ -276,6 +275,37 @@ object LLModule {
     private fun configureObservers(context: Context) {
         (context as? FenixApplication)?.let { app ->
             context.registerActivityLifecycleCallbacks(LLActivityObserver())
+        }
+    }
+
+    object LLSupportUtils {
+        enum class URLType {
+            PRIVACY_NOTICE,
+            TERMS_OF_SERVICE,
+            SUPPORT,
+            GOOGLE_URL,
+            FAQ,
+            ABOUT;
+        }
+
+        fun getLiloUrl(urlType: URLType) : String {
+            return when (urlType) {
+                URLType.PRIVACY_NOTICE -> LLAppConstants.AppURL.PRIVACY_POLICY.url()?.toString()?:LLAppConstants.homeUrl
+                URLType.TERMS_OF_SERVICE -> LLAppConstants.AppURL.TERMS_OF_SERVICE.url()?.toString()?:LLAppConstants.homeUrl
+                URLType.SUPPORT -> LLAppConstants.supportURL
+                URLType.GOOGLE_URL -> LLAppConstants.GOOGLE_URL
+                URLType.FAQ -> LLAppConstants.FAQ_URL
+                URLType.ABOUT -> LLAppConstants.AppURL.ABOUT.url()?.toString()?:LLAppConstants.homeUrl
+
+            }
+        }
+
+        fun getLiloUrl(page: SupportUtils.MozillaPage) : String {
+            return when (page) {
+                SupportUtils.MozillaPage.PRIVATE_NOTICE -> getLiloUrl(URLType.PRIVACY_NOTICE)
+                SupportUtils.MozillaPage.MANIFESTO -> getLiloUrl(URLType.ABOUT)
+                SupportUtils.MozillaPage.TERMS_OF_SERVICE -> getLiloUrl(URLType.TERMS_OF_SERVICE)
+            }
         }
     }
 }
