@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Lilo Brand Colors -->
+    <color name="lilo_dark_blue">#003987</color>
+    <color name="lilo_blue">#036DC0</color>
+    <color name="lilo_light_blue">#29b1ff</color>
+    <color name="lilo_green">#86BC24</color>
+    <color name="lilo_dark_green">#2c8807</color>
+    <color name="lilo_gray">#e8f0f7</color>
+</resources>
+

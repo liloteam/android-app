@@ -2,27 +2,21 @@ package mozilla.liloapp.migration
 
 import android.content.Context
 import android.content.pm.PackageManager
-import android.os.Build
 import android.os.Bundle
-import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.content.pm.PackageInfoCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.preference.Preference
-import androidx.preference.PreferenceCategory
-import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.SwitchPreference
 import mozilla.components.support.base.log.logger.Logger
 import mozilla.components.support.utils.ext.getPackageInfoCompat
 import org.mozilla.fenix.BrowserDirection
-import org.mozilla.fenix.BuildConfig
 import org.mozilla.fenix.HomeActivity
 import org.mozilla.fenix.LLAppConstants
 import org.mozilla.fenix.R
 import org.mozilla.fenix.ext.getPreferenceKey
 import org.mozilla.fenix.ext.settings
 import org.mozilla.fenix.settings.SettingsFragment
-import org.mozilla.fenix.settings.SharedPreferenceUpdater
 import org.mozilla.fenix.settings.requirePreference
 import org.mozilla.fenix.translations.preferences.downloadlanguages.DownloadLanguagesPreferenceFragment
 

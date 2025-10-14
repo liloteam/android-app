@@ -45,6 +45,7 @@ import org.mozilla.fenix.ext.nav
 import org.mozilla.fenix.ext.openSetDefaultBrowserOption
 import org.mozilla.fenix.ext.requireComponents
 import org.mozilla.fenix.ext.settings
+import org.mozilla.fenix.lilomodule.LLModule
 import org.mozilla.fenix.nimbus.FxNimbus
 import org.mozilla.fenix.onboarding.store.DefaultOnboardingPreferencesRepository
 import org.mozilla.fenix.onboarding.store.OnboardingPreferencesMiddleware
@@ -205,12 +206,15 @@ class OnboardingFragment : Fragment() {
                 )
             },
             onSignInButtonClick = {
-                findNavController().nav(
+                //LILO: Go to the Lilo login page instead of the Firefox SignIn screen
+                LLModule.showLoginInsteadOfHome()
+                LLModule.setShouldAddHomeTab(true)
+                /*findNavController().nav(
                     id = R.id.onboardingFragment,
                     directions = OnboardingFragmentDirections.actionGlobalTurnOnSync(
                         entrypoint = FenixFxAEntryPoint.NewUserOnboarding,
                     ),
-                )
+                )*/
                 telemetryRecorder.onSyncSignInClick(
                     sequenceId = pagesToDisplay.telemetrySequenceId(),
                     sequencePosition = pagesToDisplay.sequencePosition(OnboardingPageUiData.Type.SYNC_SIGN_IN),

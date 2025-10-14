@@ -93,7 +93,8 @@ object LLModule {
 
     val homeUrl: Uri?
         get() {
-            val home = LLAppConstants.AppURL.HOME.url(shouldShowWebIntro)
+            val appUrl = if (!LLAppEngine.shouldShowLoginAsHome) LLAppConstants.AppURL.HOME else LLAppConstants.AppURL.LOGIN
+            val home = appUrl.url(shouldShowWebIntro)
             if (shouldShowWebIntro) {
                 shouldShowWebIntro = false
             }
@@ -119,6 +120,10 @@ object LLModule {
         if (shouldDoMigration) {
             observePageLoadForLocalStorage(fragment, sessionId)
         }
+    }
+
+    fun showLoginInsteadOfHome() {
+        LLAppEngine.shouldShowLoginAsHome = true
     }
 
     private fun startMigration(context: Context, settings: LLSettings) {

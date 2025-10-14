@@ -1,3 +1,12 @@
 <resources>
-    <string name="app_name">Lilo</string>
+    <string name="app_name" translatable="false">Lilo</string>
+
+    <!-- Onboarding -->
+    <string name="onboardingLetsDoItButton">Continue</string>
+    <string name="onboardingAddWidgetButton">Add</string>
+    <string name="onboardingLaterButton">Later</string>
+
+    <!-- Menu -->
+    <string name="menuAddWidgetItemTitle">Add widget</string>
+
 </resources>

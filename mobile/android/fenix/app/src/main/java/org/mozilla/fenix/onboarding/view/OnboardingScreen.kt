@@ -48,6 +48,7 @@ import org.mozilla.fenix.compose.LinkTextState
 import org.mozilla.fenix.compose.PagerIndicator
 import org.mozilla.fenix.ext.components
 import org.mozilla.fenix.ext.settings
+import org.mozilla.fenix.lilomodule.onboarding.LLOnboardingPageForType
 import org.mozilla.fenix.onboarding.WidgetPinnedReceiver.WidgetPinnedState
 import org.mozilla.fenix.onboarding.store.OnboardingAction.OnboardingThemeAction
 import org.mozilla.fenix.onboarding.store.OnboardingAction.OnboardingToolbarAction
@@ -323,7 +324,8 @@ private fun OnboardingContent(
                 onCustomizeThemeClick = onCustomizeThemeButtonClick,
                 onTermsOfServiceButtonClick = onAgreeAndConfirmTermsOfService,
             )
-            OnboardingPageForType(
+            //LILO: Customize the onboarding pages for Lilo
+            LLOnboardingPageForType(
                 type = pageUiState.type,
                 state = onboardingPageState,
                 onboardingStore = onboardingStore,

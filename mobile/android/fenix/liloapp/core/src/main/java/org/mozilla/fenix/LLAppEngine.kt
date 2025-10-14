@@ -6,6 +6,7 @@ import mozilla.components.support.utils.ext.getPackageInfoCompat
 
 object LLAppEngine {
     private var newHomeTab = false
+    private var newHomeAsLogin = false
 
     fun customizedUserAgent(context: Context, userAgent: String?): String {
         val appInfo = getAppInfo(context)
@@ -16,12 +17,25 @@ object LLAppEngine {
 
     var shouldAddHomeTab: Boolean
         get() {
-            val tab = newHomeTab
+            val value = newHomeTab
             newHomeTab = false
-            return tab
+            return value
         }
         set(value) {
             newHomeTab = value
+        }
+
+    /**
+     * Used to show the Lilo login page just after the onboarding flow if wished by the user.
+     */
+    var shouldShowLoginAsHome: Boolean
+        get() {
+            val value = newHomeAsLogin
+            newHomeAsLogin = false
+            return value
+        }
+        set(value) {
+            newHomeAsLogin = value
         }
 
     private fun getAppInfo(context: Context): Pair<String, String> {
