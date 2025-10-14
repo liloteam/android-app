@@ -48,6 +48,7 @@ fun LLOnboardingPage(
     onDismiss: (() -> Unit)? = null,
 ) {
     val context = LocalContext.current
+    val onboardingAssets = LLOnboardingAssets(context)
 
     val pageType = when (type) {
         OnboardingPageUiData.Type.TERMS_OF_SERVICE -> LLOnboardingAssets.PageType.WELCOME
@@ -89,11 +90,13 @@ fun LLOnboardingPage(
                     modifier = Modifier.padding(horizontal = 16.dp, vertical = 32.dp),
                     horizontalAlignment = Alignment.CenterHorizontally,
                 ) {
-                    pageType?.imageUri()?.also {
-                        LLSvgFromAssets(
-                            modifier = Modifier.fillMaxWidth(),
-                            assetUri = it,
-                        )
+                    pageType?.let { type ->
+                        onboardingAssets.getImageUri(type)?.also { uri ->
+                            LLSvgFromAssets(
+                                modifier = Modifier.fillMaxWidth(),
+                                assetUri = uri,
+                            )
+                        }
                     }
 
                     Spacer(modifier = Modifier.height(16.dp))
