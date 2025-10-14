@@ -197,7 +197,9 @@ open class FenixApplication : LocaleAwareApplication(), Provider {
 
     @VisibleForTesting
     protected open fun setupInAllProcesses() {
-        setupCrashReporting()
+
+        //LILO: Do not setup crash reporting for Lilo because it causes crashes.
+        //setupCrashReporting()
 
         // We want the log messages of all builds to go to Android logcat
         Log.addSink(FenixLogSink(logsDebug = Config.channel.isDebug, AndroidLogSink()))
