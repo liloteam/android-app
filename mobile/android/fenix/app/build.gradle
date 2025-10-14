@@ -72,7 +72,7 @@ android {
         minSdkVersion = config.minSdkVersion
         compileSdk = config.compileSdkVersion
         targetSdkVersion = config.targetSdkVersion
-        versionCode 10029000
+        versionCode 10029010
         versionName "1.2.9"//Config.generateDebugVersionName()
         vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
