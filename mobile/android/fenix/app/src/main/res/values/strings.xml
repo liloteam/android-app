@@ -1,7 +1,8 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><!-- This Source Code Form is subject to the terms of the Mozilla Public
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- This Source Code Form is subject to the terms of the Mozilla Public
    - License, v. 2.0. If a copy of the MPL was not distributed with this
    - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
-<resources xmlns:tools="http://schemas.android.com/tools"  xmlns:moz="http://mozac.org/tools">
+<resources xmlns:tools="http://schemas.android.com/tools" xmlns:moz="http://mozac.org/tools">
     <!-- App name for private browsing mode. %s is the name of the app (for example "Firefox"). -->
     <string name="app_name_private_5">Private %s</string>
     <!-- App name for private browsing mode. %s is the name of the app (for example "Firefox"). -->
@@ -298,7 +299,7 @@
          %1$s is the name of the app (for example "Firefox"). -->
     <string name="browser_menu_new_in_firefox" moz:removedIn="141" tools:ignore="UnusedResources">New in %1$s</string>
     <!-- Browser menu label that toggles the request for the desktop site of the currently visited page -->
-    <string name="browser_menu_switch_to_desktop_site"  moz:removedIn="141" tools:ignore="UnusedResources">Switch to desktop site</string>
+    <string name="browser_menu_switch_to_desktop_site" moz:removedIn="141" tools:ignore="UnusedResources">Switch to desktop site</string>
     <!-- Browser menu label that toggles the request for the mobile site of the currently visited page -->
     <string name="browser_menu_switch_to_mobile_site" moz:removedIn="142" tools:ignore="UnusedResources">Switch to mobile site</string>
     <!-- Browser menu label that navigates to the page tools sub-menu -->
@@ -468,12 +469,12 @@
 
     <!-- Juno first user onboarding flow experiment, strings are marked unused as they are only referenced by Nimbus experiments. -->
     <!-- Description for learning more about our privacy notice. -->
-    <string name="juno_onboarding_privacy_notice_text" tools:ignore="BrandUsage">Firefox Privacy Notice</string>
+    <string name="juno_onboarding_privacy_notice_text" tools:ignore="BrandUsage">Lilo Privacy Notice</string>
     <!-- Title for set firefox as default browser screen used by Nimbus experiments. -->
     <string name="juno_onboarding_default_browser_title_nimbus_2">We love keeping you safe</string>
     <!-- Title for set firefox as default browser screen used by Nimbus experiments.
         Note: The word "Firefox" should NOT be translated -->
-    <string name="juno_onboarding_default_browser_title_nimbus_3" tools:ignore="BrandUsage,UnusedResources">Find out why millions love Firefox</string>
+    <string name="juno_onboarding_default_browser_title_nimbus_3" tools:ignore="BrandUsage,UnusedResources">Find out why millions love Lilo</string>
     <!-- Title for set firefox as default browser screen used by Nimbus experiments. -->
     <string name="juno_onboarding_default_browser_title_nimbus_4" tools:ignore="UnusedResources">Safe browsing with more choices</string>
     <!-- Description for set firefox as default browser screen used by Nimbus experiments. -->
@@ -490,35 +491,35 @@
     <string name="juno_onboarding_sign_in_title_2">Stay encrypted when you hop between devices</string>
     <!-- Description for sign in to sync screen. Nimbus experiments do not support string placeholders.
      Note: The word "Firefox" should NOT be translated -->
-    <string name="juno_onboarding_sign_in_description_3" tools:ignore="BrandUsage">Firefox encrypts your passwords, bookmarks, and more when you’re synced.</string>
+    <string name="juno_onboarding_sign_in_description_3" tools:ignore="BrandUsage">Lilo encrypts your passwords, bookmarks, and more when you’re synced.</string>
     <!-- Text for the button to sign in to sync on the device -->
     <string name="juno_onboarding_sign_in_positive_button" tools:ignore="UnusedResources">Sign in</string>
     <!-- Text for the button dismiss the screen and move on with the flow -->
     <string name="juno_onboarding_sign_in_negative_button" tools:ignore="UnusedResources">Not now</string>
     <!-- Title for enable notification permission screen used by Nimbus experiments. Nimbus experiments do not support string placeholders.
         Note: The word "Firefox" should NOT be translated -->
-    <string name="juno_onboarding_enable_notifications_title_nimbus_2" tools:ignore="BrandUsage">Notifications help you stay safer with Firefox</string>
+    <string name="juno_onboarding_enable_notifications_title_nimbus_2" tools:ignore="BrandUsage">Notifications help you stay safer with Lilo</string>
     <!-- Description for enable notification permission screen used by Nimbus experiments. Nimbus experiments do not support string placeholders.
        Note: The word "Firefox" should NOT be translated -->
-    <string name="juno_onboarding_enable_notifications_description_nimbus_2" tools:ignore="BrandUsage">Securely send tabs between your devices and discover other privacy features in Firefox.</string>
+    <string name="juno_onboarding_enable_notifications_description_nimbus_2" tools:ignore="BrandUsage">Securely send tabs between your devices and discover other privacy features in Lilo.</string>
     <!-- Text for the button to request notification permission on the device -->
     <string name="juno_onboarding_enable_notifications_positive_button" tools:ignore="UnusedResources">Turn on notifications</string>
     <!-- Text for the button dismiss the screen and move on with the flow -->
     <string name="juno_onboarding_enable_notifications_negative_button" tools:ignore="UnusedResources">Not now</string>
     <!-- Title for add search widget screen used by Nimbus experiments. Nimbus experiments do not support string placeholders.
         Note: The word "Firefox" should NOT be translated -->
-    <string name="juno_onboarding_add_search_widget_title" tools:ignore="BrandUsage,UnusedResources">Try the Firefox search widget</string>
+    <string name="juno_onboarding_add_search_widget_title" tools:ignore="BrandUsage,UnusedResources">Try the Lilo search widget</string>
     <!-- Description for add search widget screen used by Nimbus experiments. Nimbus experiments do not support string placeholders.
         Note: The word "Firefox" should NOT be translated -->
-    <string name="juno_onboarding_add_search_widget_description" tools:ignore="BrandUsage,UnusedResources">With Firefox on your home screen, you’ll have easy access to the privacy-first browser that blocks cross-site trackers.</string>
+    <string name="juno_onboarding_add_search_widget_description" tools:ignore="BrandUsage,UnusedResources">With Lilo on your home screen, you’ll have easy access to the privacy-first browser that blocks cross-site trackers.</string>
     <!-- Text for the button to add search widget on the device used by Nimbus experiments. Nimbus experiments do not support string placeholders.
         Note: The word "Firefox" should NOT be translated -->
-    <string name="juno_onboarding_add_search_widget_positive_button" tools:ignore="BrandUsage,UnusedResources">Add Firefox widget</string>
+    <string name="juno_onboarding_add_search_widget_positive_button" tools:ignore="BrandUsage,UnusedResources">Add Lilo widget</string>
     <!-- Text for the button to dismiss the screen and move on with the flow -->
     <string name="juno_onboarding_add_search_widget_negative_button" tools:ignore="UnusedResources">Not now</string>
     <!-- Onboarding header for the add-ons card used by Nimbus experiments. Nimbus experiments do not support string placeholders.
     Note: The word "Firefox" should NOT be translated -->
-    <string name="onboarding_add_on_header" moz:removedIn="140" tools:ignore="BrandUsage,UnusedResources">Customize your Firefox with extensions</string>
+    <string name="onboarding_add_on_header" moz:removedIn="140" tools:ignore="BrandUsage,UnusedResources">Customize your Lilo with extensions</string>
     <!-- Onboarding sub header for the add-ons card, used by Nimbus experiments. -->
     <string name="onboarding_add_on_sub_header" moz:removedIn="140" tools:ignore="UnusedResources">Add third-party extensions to enhance your security, productivity, and more.</string>
     <!-- Onboarding add-ons card, for checking more add-ons on, used by Nimbus experiments. -->
@@ -554,7 +555,7 @@
     <!-- Content description for the star rating group. %1$s is the rating. -->
     <string name="onboarding_add_on_star_rating_content_description" moz:removedIn="140" tools:ignore="UnusedResources">Rated %1$s out of 5</string>
     <!-- Title for the privacy preferences dialog shown during onboarding. Note: The word "Firefox" should NOT be translated. -->
-    <string name="onboarding_preferences_dialog_title" tools:ignore="BrandUsage">Help us make Firefox better</string>
+    <string name="onboarding_preferences_dialog_title" tools:ignore="BrandUsage">Help us make Lilo better</string>
     <!-- Title for the crash reporting option in the privacy preferences dialog shown during onboarding. -->
     <string name="onboarding_preferences_dialog_crash_reporting_title">Automatically send crash reports</string>
     <!-- Description for the crash reporting option in the privacy preferences dialog shown during onboarding. -->
@@ -563,12 +564,12 @@
     <string name="onboarding_preferences_dialog_crash_reporting_learn_more_2">Learn more</string>
     <!-- Title for the usage data option in the privacy preferences dialog shown during onboarding. Note: The word "Mozilla" should NOT be translated. -->
     <string name="onboarding_preferences_dialog_usage_data_title">Send technical and interaction data to Mozilla</string>
-    <string name="onboarding_preferences_dialog_usage_data_description_2" tools:ignore="BrandUsage">Data about your device, hardware configuration, and how you use Firefox helps improve features, performance, and stability for everyone.</string>
+    <string name="onboarding_preferences_dialog_usage_data_description_2" tools:ignore="BrandUsage">Data about your device, hardware configuration, and how you use Lilo helps improve features, performance, and stability for everyone.</string>
     <string name="onboarding_preferences_dialog_usage_data_learn_more_2">Learn more</string>
     <!-- Positive button label for the privacy preferences dialog shown during onboarding. -->
     <string name="onboarding_preferences_dialog_positive_button">Done</string>
     <!-- Terms of service onboarding title card label. 'Firefox' intentionally hardcoded here-->
-    <string name="onboarding_welcome_to_firefox" tools:ignore="BrandUsage">Welcome to Firefox</string>
+    <string name="onboarding_welcome_to_firefox" tools:ignore="BrandUsage">Welcome to Lilo</string>
     <!-- Terms of service sub header label. -->
     <string name="onboarding_terms_of_service_sub_header_2">Fast and secure web browsing</string>
     <!-- Terms of service onboarding page continue button label. -->
@@ -578,19 +579,19 @@
     <!-- Line one of the terms of service onboarding page. %1$s is replaced by an active link, using onboarding_term_of_service_line_one_link_text_2 as text (“Firefox Terms of Use”). -->
     <string name="onboarding_term_of_service_line_one_2">By continuing, you agree to the %1$s.</string>
     <!-- Used as text for the link in onboarding_term_of_service_line_one_2. -->
-    <string name="onboarding_term_of_service_line_one_link_text_2" tools:ignore="BrandUsage">Firefox Terms of Use</string>
+    <string name="onboarding_term_of_service_line_one_link_text_2" tools:ignore="BrandUsage">Lilo Terms of Use</string>
     <!-- Line two of the terms of service onboarding page. 'Firefox' is intentionally hardcoded. %1$s is replaced by an active link, using onboarding_term_of_service_line_two_link_text as text (“Privacy Notice”). -->
     <string name="onboarding_term_of_service_line_two_2" tools:ignore="BrandUsage">Lilo cares about your privacy. Learn more in our %1$s.</string>
     <!-- Used as text for the link in onboarding_term_of_service_line_two. -->
     <string name="onboarding_term_of_service_line_two_link_text">Privacy Notice</string>
     <!-- Line three of the terms of service onboarding page. 'Firefox' and 'Mozilla' are intentionally hardcoded. %1$s is replaced by an active link using onboarding_term_of_service_line_three_link_text as text (“Manage”). -->
-    <string name="onboarding_term_of_service_line_three" tools:ignore="BrandUsage">To help improve the browser, Firefox sends diagnostic and interaction data to Mozilla. %1$s</string>
+    <string name="onboarding_term_of_service_line_three" tools:ignore="BrandUsage">To help improve the browser, Lilo sends diagnostic and interaction data to Mozilla. %1$s</string>
     <!-- Used as text for the link in onboarding_term_of_service_line_three. -->
     <string name="onboarding_term_of_service_line_three_link_text">Manage</string>
     <!-- Marketing onboarding page title. 'Firefox' is intentionally hardcoded. -->
-    <string name="onboarding_marketing_title" tools:ignore="BrandUsage,UnusedResources">Help us grow Firefox</string>
+    <string name="onboarding_marketing_title" tools:ignore="BrandUsage,UnusedResources">Help us grow Lilo</string>
     <!-- Marketing onboarding page body. 'Firefox' is intentionally hardcoded. -->
-    <string name="onboarding_marketing_body" tools:ignore="BrandUsage,UnusedResources">When you share how you discovered Firefox and that you use it, you help us introduce our browser to more people.</string>
+    <string name="onboarding_marketing_body" tools:ignore="BrandUsage,UnusedResources">When you share how you discovered Lilo and that you use it, you help us introduce our browser to more people.</string>
     <!-- Marketing onboarding page opt-in checkbox. 'Mozilla' is intentionally hardcoded. -->
     <string name="onboarding_marketing_opt_in_checkbox" tools:ignore="UnusedResources">Share minimal data with Mozilla’s marketing technology partners. This data is never sold or used to show you ads.</string>
     <!-- Marketing onboarding page clickable link text to "learn more" on how data is used. -->
@@ -601,7 +602,7 @@
     <!-- Marketing onboarding page title variant. “One last thing” refers to the final step or action in the onboarding process that we’re asking users to take before they can start using the browser. -->
     <string name="onboarding_marketing_title_1" tools:ignore="UnusedResources">One last thing</string>
     <!-- Marketing onboarding page body variant. 'Firefox' is intentionally hardcoded. -->
-    <string name="onboarding_marketing_body_1" tools:ignore="BrandUsage,UnusedResources">Share how you discovered Firefox, and that you use it, with Mozilla’s marketing partners. This data is never sold.</string>
+    <string name="onboarding_marketing_body_1" tools:ignore="BrandUsage,UnusedResources">Share how you discovered Lilo, and that you use it, with Mozilla’s marketing partners. This data is never sold.</string>
     <!-- Marketing onboarding page button label variant. Button to confirm choice and start browsing. -->
     <string name="onboarding_marketing_positive_button_1" tools:ignore="UnusedResources">Agree and start browsing</string>
 
@@ -682,9 +683,9 @@
     <!-- Preference Category for settings related to Search address bar -->
     <string name="preferences_settings_address_bar">Address bar preferences</string>
     <!-- Preference Category for settings to Firefox Suggest -->
-    <string name="preference_search_address_bar_fx_suggest" tools:ignore="BrandUsage">Address bar - Firefox Suggest</string>
+    <string name="preference_search_address_bar_fx_suggest" tools:ignore="BrandUsage">Address bar - Lilo Suggest</string>
     <!-- Preference link to Learn more about Firefox Suggest -->
-    <string name="preference_search_learn_about_fx_suggest" tools:ignore="BrandUsage">Learn more about Firefox Suggest</string>
+    <string name="preference_search_learn_about_fx_suggest" tools:ignore="BrandUsage">Learn more about Lilo Suggest</string>
     <!-- Preference link to rating Fenix on the Play Store -->
     <string name="preferences_rate">Rate on Google Play</string>
     <!-- Preference linking to about page for Fenix
@@ -1039,7 +1040,7 @@
     <!-- Title of the Nimbus message for extension general availability-->
     <string name="addon_ga_message_title_2" tools:ignore="UnusedResources">New extensions now available</string>
     <!-- Body of the Nimbus message for add-ons general availability. 'Firefox' intentionally hardcoded here-->
-    <string name="addon_ga_message_body" tools:ignore="BrandUsage,UnusedResources">Check out 100+ new extensions that let you make Firefox your own.</string>
+    <string name="addon_ga_message_body" tools:ignore="BrandUsage,UnusedResources">Check out 100+ new extensions that let you make Lilo your own.</string>
     <!-- Button text of the Nimbus message for extensions general availability. -->
     <string name="addon_ga_message_button_2" tools:ignore="UnusedResources">Explore extensions</string>
 
@@ -1101,7 +1102,7 @@
     <!-- Name of the "receive tabs" notification channel. Displayed in the "App notifications" system settings for the app -->
     <string name="fxa_received_tab_channel_name">Received tabs</string>
     <!-- Description of the "receive tabs" notification channel. Displayed in the "App notifications" system settings for the app -->
-    <string name="fxa_received_tab_channel_description" tools:ignore="BrandUsage">Notifications for tabs received from other Firefox devices.</string>
+    <string name="fxa_received_tab_channel_description" tools:ignore="BrandUsage">Notifications for tabs received from other Lilo devices.</string>
     <!--  The body for these is the URL of the tab received  -->
     <string name="fxa_tab_received_notification_name">Tab Received</string>
     <!-- %s is the device name -->
@@ -1131,7 +1132,7 @@
     <!-- Preference switch for usage and technical learn more link -->
     <string name="preference_usage_data_learn_more" tools:ignore="UnusedResources" moz:removedIn="141">Learn more</string>
     <!-- Preference description for marketing data collection. Note: The words "Firefox" should NOT be translated -->
-    <string name="preferences_usage_data_description_1" tools:ignore="BrandUsage">Data about your device, hardware configuration, and usage helps us improve Firefox features, performance, and stability.</string>
+    <string name="preferences_usage_data_description_1" tools:ignore="BrandUsage">Data about your device, hardware configuration, and usage helps us improve Lilo features, performance, and stability.</string>
     <!-- Preference switch for daily usage ping data collection -->
     <string name="preferences_daily_usage_ping_title">Daily usage ping</string>
     <string name="preferences_daily_usage_ping_description">This helps Mozilla to estimate active users.</string>
@@ -1159,7 +1160,7 @@
     <string name="preferences_marketing_data_2">Campaign measurement data</string>
     <!-- Preference description for marketing data collection.
         Note: The words "Firefox" and "Mozilla" should NOT be translated. “That you use it” is to mean that the user is opting in to sharing that they are continuing to use Firefox after installing it; not that Firefox is tracking their “usage” or what they’re using it for. -->
-    <string name="preferences_marketing_data_description_4" tools:ignore="BrandUsage">Share how you discovered Firefox and that you use it with Mozilla’s marketing technology partners.</string>
+    <string name="preferences_marketing_data_description_4" tools:ignore="BrandUsage">Share how you discovered Lilo and that you use it with Mozilla’s marketing technology partners.</string>
     <!-- Learn more link for marketing data preference -->
     <string name="preferences_marketing_data_learn_more">Learn more about marketing data</string>
 
@@ -1181,7 +1182,7 @@
 
     <!-- Pairing Feature strings -->
     <!-- Instructions on how to access pairing -->
-    <string name="pair_instructions_2"><![CDATA[Scan the QR code shown at <b>firefox.com/pair</b>]]></string>
+    <string name="pair_instructions_2">Scan the QR code shown at &lt;b&gt;firefox.com/pair&lt;/b&gt;</string>
 
     <!-- Toolbar Preferences -->
     <!-- Preference for using top toolbar -->
@@ -1471,7 +1472,7 @@
     <string name="download_file_has_not_enough_storage_dialog_title">Not enough space</string>
     <!-- Message for the dialog that is shown when there is not enough storage space to download a file.
          %s is the name of the file to download. -->
-    <string name="download_file_has_not_enough_storage_dialog_message"><![CDATA[This device doesn’t have enough space to download <b>%s</b>.]]></string>
+    <string name="download_file_has_not_enough_storage_dialog_message">This device doesn’t have enough space to download &lt;b&gt;%s&lt;/b&gt;.</string>
     <!-- Text for the confirm button in the dialog that is shown when there is not enough storage space to download a file.
     This button will navigate the user to the device's storage management settings. -->
     <string name="download_file_has_not_enough_storage_dialog_confirm_button_text">Manage Files</string>
@@ -1956,7 +1957,7 @@
     <!-- An option to connect additional devices -->
     <string name="sync_connect_device">Connect another device</string>
     <!-- The dialog text shown when additional devices are not available -->
-    <string name="sync_connect_device_dialog" tools:ignore="BrandUsage">To send a tab, sign in to Firefox on at least one other device.</string>
+    <string name="sync_connect_device_dialog" tools:ignore="BrandUsage">To send a tab, sign in to Lilo on at least one other device.</string>
     <!-- Confirmation dialog button -->
     <string name="sync_confirmation_button">Got it</string>
     <!-- Share error message -->
@@ -1986,10 +1987,10 @@
     <string name="notification_marketing_channel_name">Marketing</string>
     <!-- Title shown in the notification that pops up to remind the user to set fenix as default browser.
     The app name is in the text, due to limitations with localizing Nimbus experiments -->
-    <string name="nimbus_notification_default_browser_title" tools:ignore="BrandUsage,UnusedResources">Firefox is fast and private</string>
+    <string name="nimbus_notification_default_browser_title" tools:ignore="BrandUsage,UnusedResources">Lilo is fast and private</string>
     <!-- Text shown in the notification that pops up to remind the user to set fenix as default browser.
     The app name is in the text, due to limitations with localizing Nimbus experiments -->
-    <string name="nimbus_notification_default_browser_text" tools:ignore="BrandUsage,UnusedResources">Make Firefox your default browser</string>
+    <string name="nimbus_notification_default_browser_text" tools:ignore="BrandUsage,UnusedResources">Make Lilo your default browser</string>
     <!-- Title shown in the notification that pops up to re-engage the user -->
     <string name="notification_re_engagement_title">Try private browsing</string>
     <!-- Text shown in the notification that pops up to re-engage the user.
@@ -2008,7 +2009,7 @@
     <!-- Survey -->
     <!-- Text shown in the fullscreen message that pops up to ask user to take a short survey.
     The app name is in the text, due to limitations with localizing Nimbus experiments -->
-    <string name="nimbus_survey_message_text" tools:ignore="BrandUsage">Please help make Firefox better by taking a short survey.</string>
+    <string name="nimbus_survey_message_text" tools:ignore="BrandUsage">Please help make Lilo better by taking a short survey.</string>
     <!-- Preference for taking the short survey. -->
     <string name="preferences_take_survey">Take Survey</string>
     <!-- Preference for not taking the short survey. -->
@@ -2123,7 +2124,7 @@
     <!-- Text for the snackbar confirmation that the data was deleted -->
     <string name="preferences_delete_browsing_data_snackbar">Browsing data deleted</string>
     <!-- Text for the snackbar to show the user that the deletion of browsing data is in progress -->
-    <string name="deleting_browsing_data_in_progress">Deleting browsing data&#8230;</string>
+    <string name="deleting_browsing_data_in_progress">Deleting browsing data…</string>
 
     <!-- Dialog message to the user asking to delete all history items inside the opened group. %s is a history group name. -->
     <string name="delete_all_history_group_prompt_message">Delete all sites in “%s”</string>
@@ -2150,7 +2151,7 @@
     <!-- Title of QR Pairing Fragment -->
     <string name="sync_scan_code">Scan the code</string>
     <!-- Instructions on how to access pairing -->
-    <string name="sign_in_instructions" tools:ignore="BrandUsage"><![CDATA[On your computer open Firefox and go to <b>https://firefox.com/pair</b>]]></string>
+    <string name="sign_in_instructions" tools:ignore="BrandUsage">On your computer open Lilo and go to &lt;b&gt;https://firefox.com/pair&lt;/b&gt;</string>
     <!-- Text shown for sign in pairing when ready -->
     <string name="sign_in_ready_for_scan">Ready to scan</string>
     <!-- Text shown for settings option for sign with pairing -->
@@ -2158,7 +2159,7 @@
     <!-- Text shown for settings option for sign with email -->
     <string name="sign_in_with_email">Use email instead</string>
     <!-- Text shown for settings option for create new account text.'Firefox' intentionally hardcoded here.-->
-    <string name="sign_in_create_account_text" tools:ignore="BrandUsage"><![CDATA[No account? <u>Create one</u> to sync Firefox between devices.]]></string>
+    <string name="sign_in_create_account_text" tools:ignore="BrandUsage">No account? &lt;u&gt;Create one&lt;/u&gt; to sync Lilo between devices.</string>
     <!-- Text shown in confirmation dialog to sign out of account. %s is the name of the app (for example "Firefox"). -->
     <string name="sign_out_confirmation_message_2">%s will stop syncing with your account, but won’t delete any of your browsing data on this device.</string>
     <!-- Option to continue signing out of account shown in confirmation dialog to sign out of account -->
@@ -2700,9 +2701,9 @@
     <!-- First step for the allowing a permission -->
     <string name="phone_feature_blocked_step_settings">1. Go to Android Settings</string>
     <!-- Second step for the allowing a permission -->
-    <string name="phone_feature_blocked_step_permissions"><![CDATA[2. Tap <b>Permissions</b>]]></string>
+    <string name="phone_feature_blocked_step_permissions">2. Tap &lt;b&gt;Permissions&lt;/b&gt;</string>
     <!-- Third step for the allowing a permission (%1$s is the permission name, for example "Camera"). -->
-    <string name="phone_feature_blocked_step_feature"><![CDATA[3. Toggle <b>%1$s</b> to ON]]></string>
+    <string name="phone_feature_blocked_step_feature">3. Toggle &lt;b&gt;%1$s&lt;/b&gt; to ON</string>
 
     <!-- Label that indicates a site is using a secure connection -->
     <string name="quick_settings_sheet_secure_connection_2">Connection is secure</string>
@@ -2713,7 +2714,7 @@
     <!-- Label to clear site data -->
     <string name="clear_site_data">Clear cookies and site data</string>
     <!-- Confirmation message for a dialog confirming if the user wants to delete all data for current site. %s is the domain of the site. -->
-    <string name="confirm_clear_site_data"><![CDATA[Are you sure that you want to clear all the cookies and data for the site <b>%s</b>?]]></string>
+    <string name="confirm_clear_site_data">Are you sure that you want to clear all the cookies and data for the site &lt;b&gt;%s&lt;/b&gt;?</string>
     <!-- Confirmation message for a dialog confirming if the user wants to delete all the permissions for all sites-->
     <string name="confirm_clear_permissions_on_all_sites">Are you sure that you want to clear all the permissions on all sites?</string>
     <!-- Confirmation message for a dialog confirming if the user wants to delete all the permissions for a site-->
@@ -2784,7 +2785,7 @@
     <!-- Text displayed when user has disabled tab syncing in Firefox Sync Account -->
     <string name="synced_tabs_enable_tab_syncing">Please enable tab syncing.</string>
     <!-- Text displayed when user has no tabs that have been synced -->
-    <string name="synced_tabs_no_tabs" tools:ignore="BrandUsage">You don’t have any tabs open in Firefox on your other devices.</string>
+    <string name="synced_tabs_no_tabs" tools:ignore="BrandUsage">You don’t have any tabs open in Lilo on your other devices.</string>
     <!-- Text displayed in the synced tabs screen when a user is not signed in to Firefox Sync describing Synced Tabs -->
     <string name="synced_tabs_sign_in_message">View a list of tabs from your other devices.</string>
     <!-- Text displayed on a button in the synced tabs screen to link users to sign in when a user is not signed in to Firefox Sync -->
@@ -2846,7 +2847,7 @@
     <!-- The header text of the auto-close message when the user is asked if they want to turn on the auto-closing of inactive tabs. -->
     <string name="inactive_tabs_auto_close_message_header" tools:ignore="UnusedResources">Auto-close after one month?</string>
     <!-- A description below the header to notify the user what the inactive tabs auto-close feature is. -->
-    <string name="inactive_tabs_auto_close_message_description" tools:ignore="BrandUsage,UnusedResources">Firefox can close tabs you haven’t viewed over the past month.</string>
+    <string name="inactive_tabs_auto_close_message_description" tools:ignore="BrandUsage,UnusedResources">Lilo can close tabs you haven’t viewed over the past month.</string>
     <!-- A call to action below the description to allow the user to turn on the auto closing of inactive tabs. -->
     <string name="inactive_tabs_auto_close_message_action" tools:ignore="UnusedResources">TURN ON AUTO CLOSE</string>
     <!-- Text for the snackbar to confirm auto-close is enabled for inactive tabs -->
@@ -2869,7 +2870,7 @@
     <!-- Default browser card title -->
     <string name="default_browser_experiment_card_title">Switch your default browser</string>
     <!-- Default browser card text -->
-    <string name="default_browser_experiment_card_text" tools:ignore="BrandUsage">Set links from websites, emails, and messages to open automatically in Firefox.</string>
+    <string name="default_browser_experiment_card_text" tools:ignore="BrandUsage">Set links from websites, emails, and messages to open automatically in Lilo.</string>
 
     <!-- Content description for close button in collection placeholder. -->
     <string name="remove_home_collection_placeholder_content_description">Remove</string>
@@ -2895,7 +2896,7 @@
     <!-- Title of an app feature. Smaller than a heading. %s is "Pocket". -->
     <string name="pocket_stories_feature_title_2" moz:removedIn="140" tools:ignore="UnusedResources">Powered by %s.</string>
     <!-- Caption for describing a certain feature. %s is a link using pocket_stories_feature_learn_more as text, which will load an url in a new tab when clicked.  -->
-    <string name="pocket_stories_feature_caption" moz:removedIn="140" tools:ignore="BrandUsage,UnusedResources">Part of the Firefox family. %s</string>
+    <string name="pocket_stories_feature_caption" moz:removedIn="140" tools:ignore="BrandUsage,UnusedResources">Part of the Lilo family. %s</string>
     <!-- Clickable text for opening an external link for more information about Pocket. -->
     <string name="pocket_stories_feature_learn_more" moz:removedIn="140" tools:ignore="UnusedResources">Learn more</string>
     <!-- Text indicating that the Pocket story that also displays this text is a sponsored story by other 3rd party entity. -->
@@ -2908,11 +2909,11 @@
 
     <!-- Review quality check feature-->
     <!-- Paragraph explaining the grading system we use to classify the reliability of a product's reviews. -->
-    <string name="review_quality_check_info_review_grade_header" moz:removedIn="136" tools:ignore="UnusedResources"><![CDATA[We assign each product’s reviews a <b>letter grade</b> from A to F.]]></string>
+    <string name="review_quality_check_info_review_grade_header" moz:removedIn="136" tools:ignore="UnusedResources">We assign each product’s reviews a &lt;b&gt;letter grade&lt;/b&gt; from A to F.</string>
     <!-- Paragraph explaining how a product's adjusted grading is calculated. -->
-    <string name="review_quality_check_explanation_body_adjusted_grading" moz:removedIn="136" tools:ignore="UnusedResources"><![CDATA[The <b>adjusted rating</b> is based only on reviews we believe to be reliable.]]></string>
+    <string name="review_quality_check_explanation_body_adjusted_grading" moz:removedIn="136" tools:ignore="UnusedResources">The &lt;b&gt;adjusted rating&lt;/b&gt; is based only on reviews we believe to be reliable.</string>
     <!-- Paragraph explaining product review highlights. %s is the name of the retailer (e.g. Amazon). -->
-    <string name="review_quality_check_explanation_body_highlights" moz:removedIn="136" tools:ignore="UnusedResources"><![CDATA[<b>Highlights</b> are from %s reviews within the last 80 days that we believe to be reliable.]]></string>
+    <string name="review_quality_check_explanation_body_highlights" moz:removedIn="136" tools:ignore="UnusedResources">&lt;b&gt;Highlights&lt;/b&gt; are from %s reviews within the last 80 days that we believe to be reliable.</string>
 
     <!-- Accessibility services actions labels. These will be appended to accessibility actions like "Double tap to.." but not by or applications but by services like Talkback. -->
     <!-- Action label for elements that can be collapsed if interacting with them. Talkback will append this to say "Double tap to collapse". -->
@@ -3105,10 +3106,10 @@
     <string name="download_languages_fetch_error_warning_text">Couldn’t load languages. Please check back later.</string>
     <!-- The title of the warning card informs the user that an error has occurred at downloading a language.
       %1$s is the language name, for example, "Spanish". -->
-    <string name="download_languages_error_warning_text"><![CDATA[Couldn’t download <b>%1$s</b>. Please try again.]]></string>
+    <string name="download_languages_error_warning_text">Couldn’t download &lt;b&gt;%1$s&lt;/b&gt;. Please try again.</string>
     <!-- The title of the warning card informs the user that an error has occurred at deleting a language.
           %1$s is the language name, for example, "Spanish". -->
-    <string name="download_languages_delete_error_warning_text"><![CDATA[Couldn’t delete <b>%1$s</b>. Please try again.]]></string>
+    <string name="download_languages_delete_error_warning_text">Couldn’t delete &lt;b&gt;%1$s&lt;/b&gt;. Please try again.</string>
 
     <!-- Title for the dialog used by the translations feature to confirm deleting a language.
     The dialog will be presented when the user requests deletion of a language.
@@ -3196,7 +3197,7 @@
     <string name="trackers_blocked_panel_categorical_num_trackers_blocked">%s: %d</string>
     <!-- Description text for a dialog confirming whether the user wants to delete all data for current site.
         %s is a placeholder for the base domain of website. -->
-    <string name="clear_site_data_dialog_description"><![CDATA[Removing cookies and site data for <b>%s</b> might log you out of websites and clear shopping carts.]]></string>
+    <string name="clear_site_data_dialog_description">Removing cookies and site data for &lt;b&gt;%s&lt;/b&gt; might log you out of websites and clear shopping carts.</string>
     <!-- Button text on the clear site data dialog to allow users to confirm they wish to clear the site data. -->
     <string name="clear_site_data_dialog_positive_button_text">Clear</string>
     <!-- Button text on the clear site data dialog to allow users to cancel the action and not clear the site data. -->
@@ -3256,7 +3257,7 @@
     <!-- Microsurvey -->
     <!-- Prompt view -->
     <!-- The microsurvey prompt title. Note: The word "Firefox" should NOT be translated -->
-    <string name="micro_survey_prompt_title" tools:ignore="BrandUsage,UnusedResources">Help us make Firefox better. It only takes a minute.</string>
+    <string name="micro_survey_prompt_title" tools:ignore="BrandUsage,UnusedResources">Help us make Lilo better. It only takes a minute.</string>
     <!-- The continue button label -->
     <string name="micro_survey_continue_button_label" tools:ignore="UnusedResources">Continue</string>
     <!-- Survey view -->
@@ -3283,26 +3284,26 @@
     <!-- Option for likert scale -->
     <string name="likert_scale_option_6" tools:ignore="UnusedResources">I don’t use it</string>
     <!-- Option for likert scale. Note: The word "Firefox" should NOT be translated. -->
-    <string name="likert_scale_option_7" tools:ignore="BrandUsage,UnusedResources">I don’t use search on Firefox</string>
+    <string name="likert_scale_option_7" tools:ignore="BrandUsage,UnusedResources">I don’t use search on Lilo</string>
     <!-- Option for likert scale -->
     <string name="likert_scale_option_8" tools:ignore="UnusedResources">I don’t use sync</string>
     <!-- Text shown in prompt for printing microsurvey. "sec" It's an abbreviation for "second". Note: The word "Firefox" should NOT be translated. -->
-    <string name="microsurvey_prompt_printing_title" tools:ignore="BrandUsage,UnusedResources">Help make printing in Firefox better. It only takes a sec</string>
+    <string name="microsurvey_prompt_printing_title" tools:ignore="BrandUsage,UnusedResources">Help make printing in Lilo better. It only takes a sec</string>
     <!-- Text shown in prompt for search microsurvey. Note: The word "Firefox" should NOT be translated. -->
-    <string name="microsurvey_prompt_search_title" tools:ignore="BrandUsage,UnusedResources">Help make search in Firefox better. It only takes a minute</string>
+    <string name="microsurvey_prompt_search_title" tools:ignore="BrandUsage,UnusedResources">Help make search in Lilo better. It only takes a minute</string>
     <!-- Text shown in prompt for sync microsurvey. Note: The word "Firefox" should NOT be translated. -->
-    <string name="microsurvey_prompt_sync_title" tools:ignore="BrandUsage,UnusedResources">Help make sync in Firefox better. It only takes a minute</string>
+    <string name="microsurvey_prompt_sync_title" tools:ignore="BrandUsage,UnusedResources">Help make sync in Lilo better. It only takes a minute</string>
     <!-- Text shown in the survey title for printing microsurvey. Note: The word "Firefox" should NOT be translated. -->
-    <string name="microsurvey_survey_printing_title" tools:ignore="BrandUsage,UnusedResources">How satisfied are you with printing in Firefox?</string>
+    <string name="microsurvey_survey_printing_title" tools:ignore="BrandUsage,UnusedResources">How satisfied are you with printing in Lilo?</string>
     <!-- Text shown in the survey title for homepage microsurvey. Note: The word "Firefox" should NOT be translated. -->
-    <string name="microsurvey_homepage_title" tools:ignore="BrandUsage,UnusedResources">How satisfied are you with your Firefox homepage?</string>
+    <string name="microsurvey_homepage_title" tools:ignore="BrandUsage,UnusedResources">How satisfied are you with your Lilo homepage?</string>
     <!-- Text shown in the survey title for search experience microsurvey. Note: The word "Firefox" should NOT be translated. -->
-    <string name="microsurvey_search_title" tools:ignore="BrandUsage,UnusedResources">How satisfied are you with the search experience in Firefox?</string>
+    <string name="microsurvey_search_title" tools:ignore="BrandUsage,UnusedResources">How satisfied are you with the search experience in Lilo?</string>
     <!-- Text shown in the survey title for sync experience microsurvey. Note: The word "Firefox" should NOT be translated. -->
-    <string name="microsurvey_sync_title" tools:ignore="BrandUsage,UnusedResources">How satisfied are you with the sync experience in Firefox?</string>
+    <string name="microsurvey_sync_title" tools:ignore="BrandUsage,UnusedResources">How satisfied are you with the sync experience in Lilo?</string>
     <!-- Accessibility -->
     <!-- Content description for the survey application icon. Note: The word "Firefox" should NOT be translated.  -->
-    <string name="microsurvey_app_icon_content_description" tools:ignore="BrandUsage">Firefox logo</string>
+    <string name="microsurvey_app_icon_content_description" tools:ignore="BrandUsage">Lilo logo</string>
     <!-- Content description for the survey feature icon. -->
     <string name="microsurvey_feature_icon_content_description">Survey feature icon</string>
     <!-- Content description (not visible, for screen readers etc.) for closing microsurvey bottom sheet. -->
@@ -3385,27 +3386,27 @@
     <!-- Homepage card button to open Google Play Store. "Update" is a verb. -->
     <string name="certificate_warning_homepage_card_update_now_button" tools:ignore="UnusedResources">Update now</string>
     <!-- Homepage card title about old Firefox version. "Update" is a verb. Note: The word "Firefox" should NOT be translated. -->
-    <string name="certificate_warning_homepage_card_hca1_title" tools:ignore="BrandUsage,UnusedResources">Update your Firefox browser</string>
+    <string name="certificate_warning_homepage_card_hca1_title" tools:ignore="BrandUsage,UnusedResources">Update your Lilo browser</string>
     <!-- Homepage card message about old Firefox version -->
     <string name="certificate_warning_homepage_card_hca1_message" tools:ignore="UnusedResources">A root certificate will expire, causing some features to stop working on March 14.</string>
     <!-- Homepage card title about old Firefox version. "Update" is a verb. -->
     <string name="certificate_warning_homepage_card_hcr1_title" tools:ignore="UnusedResources">Update before March 14</string>
     <!-- Homepage card message about old Firefox version. Note: The word "Firefox" should NOT be translated. -->
-    <string name="certificate_warning_homepage_card_hcr1_message" tools:ignore="BrandUsage,UnusedResources">A root certificate will expire, causing your version of Firefox to stop working properly.</string>
+    <string name="certificate_warning_homepage_card_hcr1_message" tools:ignore="BrandUsage,UnusedResources">A root certificate will expire, causing your version of Lilo to stop working properly.</string>
     <!-- Homepage card title about old Firefox version -->
     <string name="certificate_warning_homepage_card_hcw2_title" tools:ignore="UnusedResources">Less than 7 days to left to update</string>
     <!-- Homepage card message about old Firefox version. Note: The word "Firefox" should NOT be translated. -->
-    <string name="certificate_warning_homepage_card_hcw2_message" tools:ignore="BrandUsage,UnusedResources">On March 14, add-ons and other Firefox features will stop working because a root certificate is expiring.</string>
+    <string name="certificate_warning_homepage_card_hcw2_message" tools:ignore="BrandUsage,UnusedResources">On March 14, add-ons and other Lilo features will stop working because a root certificate is expiring.</string>
     <!-- Homepage card title about old Firefox version. Note: The word "Firefox" should NOT be translated. -->
-    <string name="certificate_warning_homepage_card_hcw3_title" tools:ignore="BrandUsage,UnusedResources">Last chance to keep your Firefox</string>
+    <string name="certificate_warning_homepage_card_hcw3_title" tools:ignore="BrandUsage,UnusedResources">Last chance to keep your Lilo</string>
     <!-- Homepage card message about old Firefox version. Note: The word "Firefox" should NOT be translated. -->
-    <string name="certificate_warning_homepage_card_hcw3_message" tools:ignore="BrandUsage,UnusedResources">Your version of Firefox will stop working properly on March 14 because a root certificate is expiring.</string>
+    <string name="certificate_warning_homepage_card_hcw3_message" tools:ignore="BrandUsage,UnusedResources">Your version of Lilo will stop working properly on March 14 because a root certificate is expiring.</string>
     <!-- Push notification title about old Firefox version. "Update" is a noun. -->
     <string name="certificate_warning_push_notification_update_recommended_title" tools:ignore="UnusedResources">Update recommended</string>
     <!-- Push notification message about old Firefox version -->
     <string name="certificate_warning_push_notification_pnr1_message" tools:ignore="UnusedResources">Add-ons and some features will stop working on March 14.</string>
     <!-- Push notification title about old Firefox version. Note: The word "Firefox" should NOT be translated. -->
-    <string name="certificate_warning_push_notification_pnw2_title" tools:ignore="BrandUsage,UnusedResources">You’re on an older version of Firefox</string>
+    <string name="certificate_warning_push_notification_pnw2_title" tools:ignore="BrandUsage,UnusedResources">You’re on an older version of Lilo</string>
     <!-- Push notification message about old Firefox version. "Update" is a verb. -->
     <string name="certificate_warning_push_notification_pnw2_message" tools:ignore="UnusedResources">Update before March 14 to keep using add-ons and other features.</string>
     <!-- Push notification message about old Firefox version -->
