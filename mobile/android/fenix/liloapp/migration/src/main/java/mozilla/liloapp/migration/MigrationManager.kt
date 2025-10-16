@@ -7,6 +7,7 @@ import kotlinx.coroutines.launch
 import mozilla.components.concept.fetch.Client
 import mozilla.components.support.base.log.logger.Logger
 import mozilla.liloapp.migration.bookmark.BookmarkApiService
+import mozilla.liloapp.migration.bookmark.BookmarkModel
 import mozilla.liloapp.migration.cookie.CookieRetriever
 import mozilla.liloapp.migration.localstorage.LocalStorageHelper
 import kotlin.coroutines.CoroutineContext
@@ -56,28 +57,22 @@ class MigrationManager(
     }
 
     /**
-     * Fetch bookmarks from the Lilo API and log them to Logcat
+     * Fetch bookmarks from the Lilo API and save them to native bookmarks storage
      * 
+     * @param client The HTTP client to use for API calls
      * @param token The user token to fetch bookmarks for
      */
-    fun fetchRemoteBookmarks(client: Client, token: String) = scope.launch {
+    fun fetchRemoteBookmarks(client: Client, token: String, complete: (bookmarks: List<BookmarkModel>) -> Unit) = scope.launch {
         logger.debug("Fetching remote bookmarks for token: $token")
         
         val bookmarkApiService = BookmarkApiService(client)
         val bookmarks = bookmarkApiService.fetchBookmarks(token)
         
         if (bookmarks.isNotEmpty()) {
-            logger.info("Retrieved ${bookmarks.size} bookmarks from API:")
-            bookmarks.forEachIndexed { index, bookmark ->
-                logger.info("Bookmark #${index + 1}:")
-                logger.info("  ID: ${bookmark.id}")
-                logger.info("  Title: ${bookmark.title}")
-                logger.info("  URL: ${bookmark.url}")
-                logger.info("  Color: ${bookmark.color}")
-                logger.info("  Icon: ${bookmark.icon}")
-            }
+            logger.debug("Retrieved ${bookmarks.size} bookmarks from API")
+            complete(bookmarks)
         } else {
-            logger.info("No bookmarks retrieved from API")
+            logger.debug("No bookmarks retrieved from API")
         }
     }
 

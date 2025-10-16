@@ -33,6 +33,7 @@ import org.mozilla.fenix.components.menu.MenuDialogFragment
 import org.mozilla.fenix.ext.components
 import org.mozilla.fenix.ext.getPreferenceKey
 import org.mozilla.fenix.ext.settings
+import org.mozilla.fenix.lilomodule.bookmark.BookmarkSaver
 import org.mozilla.fenix.lilomodule.browser.initializeLiloUI
 import org.mozilla.fenix.lilomodule.components.menu.goToLoginPage
 import org.mozilla.fenix.lilomodule.search.LLSearchEngine
@@ -180,7 +181,11 @@ object LLModule {
     private fun fetchBookmarks(context: Context, userToken: String) {
         val client = context.components.core.client
         val migrationManager = MigrationManager(context)
-        migrationManager.fetchRemoteBookmarks(client, userToken)
+        migrationManager.fetchRemoteBookmarks(client, userToken) { bookmarks ->
+            logger.debug("Bookmarks fetched successfully")
+            val bookmarkSaver = BookmarkSaver(context)
+            bookmarkSaver.savingBookmarks(bookmarks)
+        }
     }
 
     /**
