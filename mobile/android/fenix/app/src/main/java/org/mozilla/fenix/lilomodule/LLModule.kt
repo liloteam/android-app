@@ -127,6 +127,10 @@ object LLModule {
     }
 
     private fun startMigration(context: Context, settings: LLSettings) {
+        // Bookmarks migration
+        // Retrieve the user's bookmarks from the Lilo backend.
+        fetchBookmarks(context, "fd69e959e8c6d6e70f13633f30908c5b")
+
         // Cookies migration
         if (shouldDoMigration) {
             // Initialize the web storage feature and migration the cookies while the extension is connected.
@@ -170,6 +174,14 @@ object LLModule {
         }
     }
 
+    /**
+     * Fetch bookmarks from the API and save them
+     */
+    private fun fetchBookmarks(context: Context, userToken: String) {
+        val client = context.components.core.client
+        val migrationManager = MigrationManager(context)
+        migrationManager.fetchRemoteBookmarks(client, userToken)
+    }
 
     /**
      * Read the local storage of the Android Webview.
