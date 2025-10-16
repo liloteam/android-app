@@ -128,10 +128,6 @@ object LLModule {
     }
 
     private fun startMigration(context: Context, settings: LLSettings) {
-        // Bookmarks migration
-        // Retrieve the user's bookmarks from the Lilo backend.
-        fetchBookmarks(context, "fd69e959e8c6d6e70f13633f30908c5b")
-
         // Cookies migration
         if (shouldDoMigration) {
             // Initialize the web storage feature and migration the cookies while the extension is connected.
@@ -149,12 +145,16 @@ object LLModule {
         if (shouldDoMigration) {
             // Check if it's the first run of the app and if so, check if there is a user key
             // for migration.
-            settings.checkForLegacyUserKey()?.let {
-                logger.info("LILO:DBG: User key from migration: $it")
+            settings.checkForLegacyUserKey()?.let { userKey ->
+                logger.info("LILO:DBG: User key from migration: $userKey")
                 // If the user key exists from a previous app version then the app shall call
-                // the API to retrieve the user's favors
-                // TODO: Implement the API call to get the favors from the user key.
+                // the Lilo's API to retrieve the user's favors
 
+                // Bookmarks migration
+                if (userKey.isNotEmpty()) {
+                    // Retrieve the user's bookmarks from the Lilo backend.
+                    fetchBookmarks(context, userKey)
+                }
             } ?: run {
                 logger.info("LILO:DBG: No user key from migration")
                 // Nothing to do!
