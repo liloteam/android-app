@@ -75,8 +75,6 @@ import org.mozilla.fenix.components.menu.MenuDialogTestTag.DESKTOP_SITE_ON
 import org.mozilla.fenix.components.menu.MenuDialogTestTag.EXTENSIONS
 import org.mozilla.fenix.components.menu.compose.header.MenuNavHeader
 import org.mozilla.fenix.components.menu.store.WebExtensionMenuItem
-import org.mozilla.fenix.lilomodule.components.menu.compose.LLExtensionsMenuItem
-import org.mozilla.fenix.lilomodule.components.menu.compose.LLNewTabMenuItems
 import org.mozilla.fenix.theme.FirefoxTheme
 import org.mozilla.fenix.theme.Theme
 import org.mozilla.fenix.utils.DURATION_MS_MAIN_MENU_ITEM
@@ -264,7 +262,8 @@ fun MainMenu(
                 )
         }
 
-        LibraryMenuGroup(
+        //LILO: remove the Passwords section from the main menu
+        org.mozilla.fenix.lilomodule.components.menu.compose.LLLibraryMenuGroup(
             onBookmarksMenuClick = onBookmarksMenuClick,
             onHistoryMenuClick = onHistoryMenuClick,
             onDownloadsMenuClick = onDownloadsMenuClick,
@@ -493,7 +492,7 @@ private fun ToolsAndActionsMenuGroup(
         }
 
         //LILO: customize the main menu adding both New tab and New private tab items
-        LLNewTabMenuItems()
+        org.mozilla.fenix.lilomodule.components.menu.compose.LLNewTabMenuItems()
 
         if (isBookmarked) {
             MenuItem(
@@ -542,7 +541,7 @@ private fun ToolsAndActionsMenuGroup(
         }
 
         //LILO: customize the main menu
-        LLExtensionsMenuItem(
+        org.mozilla.fenix.lilomodule.components.menu.compose.LLExtensionsMenuItem(
             isExtensionsProcessDisabled = isExtensionsProcessDisabled,
             isExtensionsExpanded = isExtensionsExpanded,
             isPrivate = isPrivate,
