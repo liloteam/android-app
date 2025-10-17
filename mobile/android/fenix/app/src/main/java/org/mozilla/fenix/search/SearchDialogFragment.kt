@@ -100,6 +100,7 @@ import org.mozilla.fenix.ext.secure
 import org.mozilla.fenix.ext.settings
 import org.mozilla.fenix.lilomodule.LLModule
 import org.mozilla.fenix.lilomodule.ext.doNotResizeScreen
+import org.mozilla.fenix.lilomodule.search.ensureTabIsSelectedBeforeDismiss
 import org.mozilla.fenix.lilomodule.search.toolbar.LLSearchSelectorToolbarAction
 import org.mozilla.fenix.navigation.DefaultNavControllerProvider
 import org.mozilla.fenix.navigation.NavControllerProvider
@@ -699,14 +700,17 @@ class SearchDialogFragment : AppCompatDialogFragment(), UserInteractionHandler {
                         SearchDialogFragmentDirections.actionGlobalBrowser(null),
                     )
                 }
+                
+                //LILO: If no session exists and user is exiting search without searching, ensure a tab exists so the user doesn't see a reduced menu
+                ensureTabIsSelectedBeforeDismiss(args.sessionId)
             }
 
             view?.hideKeyboard()
             dismissAllowingStateLoss()
         }
     }
-
-    @Suppress("DEPRECATION")
+    
+        @Suppress("DEPRECATION")
     // https://github.com/mozilla-mobile/fenix/issues/19920
     private fun createQrFeature(): QrFeature {
         return QrFeature(
