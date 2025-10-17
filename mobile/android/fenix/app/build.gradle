@@ -173,7 +173,6 @@ android {
                     // fatal consequences. For example see:
                     //  - https://issuetracker.google.com/issues/36924841
                     //  - https://issuetracker.google.com/issues/36905922
-                    "sharedUserId": "org.lilo.mobile.android2020.sharedID",
                     "deepLinkScheme": deepLinkSchemeValue,
             ])
         }
