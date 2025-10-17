@@ -540,7 +540,7 @@ private fun ToolsAndActionsMenuGroup(
             )
         }
 
-        //LILO: customize the main menu
+        //LILO: customize the main menu by removing the Extensions item
         org.mozilla.fenix.lilomodule.components.menu.compose.LLExtensionsMenuItem(
             isExtensionsProcessDisabled = isExtensionsProcessDisabled,
             isExtensionsExpanded = isExtensionsExpanded,
@@ -705,7 +705,8 @@ private fun HomepageMenuGroup(
     extensionsMenuItemDescription: String?,
 ) {
     MenuGroup {
-        ExtensionsMenuItem(
+        //LILO: customize the reduced main menu by removing the Extensions item. The reduced main menu should ne be used for Lilo.
+        org.mozilla.fenix.lilomodule.components.menu.compose.LLExtensionsMenuItem(
             isExtensionsProcessDisabled = isExtensionsProcessDisabled,
             isExtensionsExpanded = isExtensionsExpanded,
             isPrivate = isPrivate,

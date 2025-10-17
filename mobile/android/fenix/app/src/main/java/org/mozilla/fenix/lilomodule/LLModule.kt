@@ -52,9 +52,13 @@ object LLModule {
 
 
     fun initializeLilo(context: Context) {
-        val settings = LLSettings(context)
-        val isFirstRun = settings.isFirstRun
-        shouldDoMigration = settings.isDdgUpdate && (isFirstRun || shouldForceMigration)
+        val liloSettings = LLSettings(context)
+        val isFirstRun = liloSettings.isFirstRun
+        shouldDoMigration = liloSettings.isDdgUpdate && (isFirstRun || shouldForceMigration)
+
+        // Force the menu banner not to be shown despite the Nimbus settings.
+        val fenixSettings = context.settings()
+        fenixSettings.shouldShowMenuBanner = false
 
         // Customize the user agent string for Lilo.
         val engineSettings = context.components.core.engine.settings
@@ -63,22 +67,22 @@ object LLModule {
 
         // Enable Firebase Analytics according to the user's preference.
         val analytics = FirebaseAnalytics.getInstance(context)
-        analytics.setAnalyticsCollectionEnabled(context.settings().isTelemetryEnabled)
+        analytics.setAnalyticsCollectionEnabled(fenixSettings.isTelemetryEnabled)
 
         // Select the Lilo search engine if not already selected.
         LLSearchEngine(logger).setupLiloSearchEngine(context)
 
         // Force the offer to translate option to be disabled.
-        settings.updateOfferTranslationOption(false)
+        liloSettings.updateOfferTranslationOption(false)
 
         // Start the migration process if necessary.
-        startMigration(context, settings)
+        startMigration(context, liloSettings)
 
         // Do not show the onboarding if the app is updated from a previous ddg version.
-        if (settings.isDdgUpdate) { context.components.fenixOnboarding.finish() }
+        if (liloSettings.isDdgUpdate) { context.components.fenixOnboarding.finish() }
 
         // Define if the intro Lilo Web page should be shown.
-        shouldShowWebIntro = isFirstRun && !settings.isDdgUpdate
+        shouldShowWebIntro = isFirstRun && !liloSettings.isDdgUpdate
 
         // TEMPORARY: Never show the onboarding.
         // TODO: Must to be removed when the onboarding is fully implemented.
@@ -128,8 +132,9 @@ object LLModule {
     }
 
     private fun startMigration(context: Context, settings: LLSettings) {
+        if (!shouldDoMigration) { return }
+
         // Cookies migration
-        if (shouldDoMigration) {
             // Initialize the web storage feature and migration the cookies while the extension is connected.
             if (webStorageFeature == null) {
                 val runtime = context.components.core.geckoRuntime
@@ -139,10 +144,8 @@ object LLModule {
                 }
                 webStorageFeature = webStorage
             }
-        }
 
         // User key migration
-        if (shouldDoMigration) {
             // Check if it's the first run of the app and if so, check if there is a user key
             // for migration.
             settings.checkForLegacyUserKey()?.let { userKey ->
@@ -159,21 +162,16 @@ object LLModule {
                 logger.info("LILO:DBG: No user key from migration")
                 // Nothing to do!
             }
-        }
 
         // Local storage migration
-        if (shouldDoMigration) {
             (context as? FenixApplication)?.let { app ->
                 readLocalStorage(app)
             }
-        }
 
         // Tabs migration
-        if (shouldDoMigration) {
             val migrationManager = MigrationManager(context)
             migrationManager.restoreTabs()
         }
-    }
 
     /**
      * Fetch bookmarks from the API and save them
