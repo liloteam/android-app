@@ -3,6 +3,7 @@ package org.mozilla.fenix
 import android.content.Context
 import androidx.core.content.pm.PackageInfoCompat
 import mozilla.components.support.utils.ext.getPackageInfoCompat
+import org.mozilla.fenix.liloapp.core.R
 
 object LLAppEngine {
     private var newHomeTab = false
@@ -36,6 +37,11 @@ object LLAppEngine {
         }
         set(value) {
             newHomeAsLogin = value
+        }
+
+    val addWidgetMenuResources: Pair<Int, Int>
+        get() {
+            return Pair(R.drawable.ic_add_widget, R.string.menuAddWidgetItemTitle)
         }
 
     private fun getAppInfo(context: Context): Pair<String, String> {

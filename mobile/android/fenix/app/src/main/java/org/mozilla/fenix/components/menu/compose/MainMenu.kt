@@ -278,6 +278,9 @@ fun MainMenu(
                 isPrivate = isPrivate,
             )
 
+            //LILO: add the Add Widget menu item
+            org.mozilla.fenix.lilomodule.components.menu.compose.LLAddWidgetMenuItem()
+
             MenuItem(
                 label = stringResource(id = R.string.browser_menu_settings),
                 beforeIconPainter = painterResource(id = R.drawable.mozac_ic_settings_24),

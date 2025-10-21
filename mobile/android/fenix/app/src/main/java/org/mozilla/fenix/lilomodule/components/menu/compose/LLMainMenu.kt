@@ -20,10 +20,13 @@ import androidx.compose.ui.semantics.collectionInfo
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
 import org.mozilla.fenix.HomeActivity
+import org.mozilla.fenix.LLAppEngine
 import org.mozilla.fenix.R
 import org.mozilla.fenix.components.menu.compose.LibraryMenuItem
 import org.mozilla.fenix.components.menu.compose.MenuItem
+import org.mozilla.fenix.ext.settings
 import org.mozilla.fenix.lilomodule.home.addNewTab
+import org.mozilla.fenix.utils.maybeShowAddSearchWidgetPrompt
 
 /**
  * Horizontal menu group without the Passwords section. Only with History,
@@ -119,4 +122,19 @@ fun LLNewTabMenuItems() {
             (context as? HomeActivity)?.addNewTab(true)
         },
     )
+}
+
+@Composable
+fun LLAddWidgetMenuItem() {
+    val context = LocalContext.current
+    if (!context.settings().searchWidgetInstalled) {
+        val itemResources = LLAppEngine.addWidgetMenuResources
+        MenuItem(
+            label = stringResource(id = itemResources.second),
+            beforeIconPainter = painterResource(id = itemResources.first),
+            onClick = {
+                (context as? HomeActivity)?.also { maybeShowAddSearchWidgetPrompt(it) }
+            },
+        )
+    }
 }
