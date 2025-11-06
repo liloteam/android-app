@@ -108,20 +108,6 @@ fun LLTabPageBanner(
                 )
 
                 Tab(
-                    selected = selectedPage == Page.PrivateTabs,
-                    onClick = { onTabPageIndicatorClicked(Page.PrivateTabs) },
-                    modifier = Modifier
-                        .testTag(TabsTrayTestTag.PRIVATE_TABS_PAGE_BUTTON)
-                        .semantics {
-                            contentDescription = privateTabDescription
-                        }
-                        .height(ROW_HEIGHT_DP.dp),
-                    unselectedContentColor = inactiveColor,
-                ) {
-                    Text(text = stringResource(id = R.string.tabs_header_private_tabs_title))
-                }
-
-                Tab(
                     selected = selectedPage == Page.NormalTabs,
                     onClick = { onTabPageIndicatorClicked(Page.NormalTabs) },
                     modifier = Modifier
@@ -133,6 +119,20 @@ fun LLTabPageBanner(
                     unselectedContentColor = inactiveColor,
                 ) {
                     Text(text = stringResource(R.string.tabs_header_normal_tabs_title))
+                }
+
+                Tab(
+                    selected = selectedPage == Page.PrivateTabs,
+                    onClick = { onTabPageIndicatorClicked(Page.PrivateTabs) },
+                    modifier = Modifier
+                        .testTag(TabsTrayTestTag.PRIVATE_TABS_PAGE_BUTTON)
+                        .semantics {
+                            contentDescription = privateTabDescription
+                        }
+                        .height(ROW_HEIGHT_DP.dp),
+                    unselectedContentColor = inactiveColor,
+                ) {
+                    Text(text = stringResource(id = R.string.tabs_header_private_tabs_title))
                 }
 
             }
