@@ -179,7 +179,8 @@ private fun FoxEmojiButton(
         Arrangement.Center,
         Alignment.CenterHorizontally,
     ) {
-        Image(emoji, contentDescription = null)
+        //LILO: Delete the image which is specific to Firefox
+        //Image(emoji, contentDescription = null)
 
         Spacer(Modifier.height(10.dp))
 

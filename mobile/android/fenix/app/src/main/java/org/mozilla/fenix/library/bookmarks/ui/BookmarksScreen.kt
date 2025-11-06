@@ -359,7 +359,8 @@ private fun BookmarksList(
         }
         val emptyListState = state.emptyListState()
         if (emptyListState != null) {
-            EmptyList(state = emptyListState, dispatcher = store::dispatch)
+            //LILO: customize the empty list without neither image nor sync button
+            org.mozilla.fenix.lilomodule.library.bookmarks.LLEmptyList()
             return@Scaffold
         }
 

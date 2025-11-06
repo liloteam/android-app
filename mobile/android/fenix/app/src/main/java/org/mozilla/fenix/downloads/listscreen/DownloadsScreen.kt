@@ -375,7 +375,8 @@ private fun DownloadsScreenContent(
         }
 
         when (uiState.itemsState) {
-            is DownloadUIState.ItemsState.NoItems -> EmptyState(modifier = Modifier.fillMaxSize())
+            //LILO: Customize the empty state of the downloads screen
+            is DownloadUIState.ItemsState.NoItems -> org.mozilla.fenix.lilomodule.downloads.listscreen.LLEmptyState(modifier = Modifier.fillMaxSize())
             is DownloadUIState.ItemsState.NoSearchResults -> NoSearchResults(
                 modifier = Modifier.fillMaxSize(),
             )
