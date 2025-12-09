@@ -8,6 +8,8 @@ import com.google.android.gms.common.api.internal.ActivityLifecycleObserver
 import mozilla.components.support.base.log.logger.Logger
 import mozilla.liloapp.migration.LLFragmentObserver
 import org.mozilla.fenix.HomeActivity
+import org.mozilla.fenix.lilomodule.onboarding.UpdateOnboardingDialogFragment
+import org.mozilla.fenix.lilomodule.settings.LLSettings
 
 /**
  * Called when a activity is created.
@@ -23,10 +25,19 @@ class LLActivityObserver : Application.ActivityLifecycleCallbacks {
                 LLFragmentObserver(),
                 true
             )
+
+            val liloSettings = LLSettings(activity)
+            if (liloSettings.shouldShowUpdateOnboarding) {
+                UpdateOnboardingDialogFragment.show(
+                    activity.supportFragmentManager,
+                )
+            }
+
         }
     }
 
-    override fun onActivityStarted(activity: Activity) {}
+    override fun onActivityStarted(activity: Activity) {
+    }
     override fun onActivityResumed(activity: Activity) {}
     override fun onActivityPaused(activity: Activity) {}
     override fun onActivityStopped(activity: Activity) {}

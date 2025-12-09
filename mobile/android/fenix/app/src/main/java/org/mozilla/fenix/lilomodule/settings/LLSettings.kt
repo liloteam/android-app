@@ -1,6 +1,7 @@
 package org.mozilla.fenix.lilomodule.settings
 
 import android.content.Context
+import android.os.StrictMode
 import mozilla.components.browser.state.action.TranslationsAction
 import mozilla.components.support.base.log.logger.Logger
 import org.mozilla.fenix.LLLegacySettingsSharedPreferences
@@ -14,6 +15,7 @@ data class LLSettings(
     val context: Context
 ) {
     private val logger = Logger("LLSettings")
+    private val strictMode = context.components.strictMode
 
     private val legacySettings by lazy {
         LLLegacySettingsSharedPreferences(context)
@@ -50,7 +52,9 @@ data class LLSettings(
 
     val isFirstRun: Boolean
         get() {
-            val currentFirstDate = liloSettings.appFirstDate
+            val currentFirstDate = strictMode.resetAfter(StrictMode.allowThreadDiskReads()) {
+                liloSettings.appFirstDate
+            }
             if (currentFirstDate < 0) {
                 liloSettings.appFirstDate = System.currentTimeMillis()
                 return true
@@ -59,5 +63,11 @@ data class LLSettings(
         }
 
     val isDdgUpdate: Boolean
-        get() = legacySettings.hasKeys
+        get() = strictMode.resetAfter(StrictMode.allowThreadDiskReads()) {
+            legacySettings.hasKeys
+        }
+
+    val shouldShowUpdateOnboarding: Boolean
+        get() = isDdgUpdate && !isFirstRun
+
 }

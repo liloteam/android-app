@@ -54,6 +54,10 @@ object LLModule {
     fun initializeLilo(context: Context) {
         val liloSettings = LLSettings(context)
         val isFirstRun = liloSettings.isFirstRun
+
+        //LILO:TEST
+        logger.info("LILO:ONB: is DDG update: ${liloSettings.isDdgUpdate}")
+
         shouldDoMigration = liloSettings.isDdgUpdate && (isFirstRun || shouldForceMigration)
 
         // Force the menu banner not to be shown despite the Nimbus settings.
@@ -78,7 +82,8 @@ object LLModule {
         // Start the migration process if necessary.
         startMigration(context, liloSettings)
 
-        // Do not show the onboarding if the app is updated from a previous ddg version.
+        // Do not show the regular onboarding if the app is updated from a previous ddg version.
+        // Instead, the update onboarding will be shown (handled in HomeActivity).
         if (liloSettings.isDdgUpdate) { context.components.fenixOnboarding.finish() }
 
         // Define if the intro Lilo Web page should be shown.

@@ -94,5 +94,7 @@ object LLAppConstants {
     object OnboardingImage {
         const val WELCOME = "onboarding-lilo-welcome.svg"
         const val ACCOUNT = "onboarding-lilo-account.svg"
+        const val CONFIDENTIALITY = "onboarding-lilo-update-confidentiality.svg"
+        const val NAVIGATION = "onboarding-lilo-update-navigation.svg"
     }
 }

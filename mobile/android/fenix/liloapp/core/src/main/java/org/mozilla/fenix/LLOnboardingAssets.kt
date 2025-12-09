@@ -2,7 +2,6 @@ package org.mozilla.fenix
 
 import android.content.Context
 import mozilla.components.support.base.log.logger.Logger
-import org.mozilla.fenix.liloapp.core.R
 import java.io.IOException
 import java.util.Locale
 
@@ -29,7 +28,9 @@ data class LLOnboardingAssets(
     enum class PageType {
         WELCOME,
         THEME,
-        LOGIN;
+        LOGIN,
+        CONFIDENTIALITY,
+        NAVIGATION;
 
         /**
          * Returns the URI for the image associated with this page type.
@@ -41,6 +42,8 @@ data class LLOnboardingAssets(
                 WELCOME -> LLAppConstants.OnboardingImage.WELCOME
                 THEME -> null
                 LOGIN -> LLAppConstants.OnboardingImage.ACCOUNT
+                CONFIDENTIALITY -> LLAppConstants.OnboardingImage.CONFIDENTIALITY
+                NAVIGATION -> LLAppConstants.OnboardingImage.NAVIGATION
             } ?: return null
 
             // Get the localized directory path
@@ -80,7 +83,7 @@ data class LLOnboardingAssets(
     /**
      * Get the image URI for a specific page type using the current locale.
      */
-    fun getImageUri(pageType: PageType): String? {
+    fun getImageUri(pageType: PageType, locale: Locale = this.locale): String? {
         return pageType.imageUri(context, locale)
     }
 

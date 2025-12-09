@@ -1,6 +1,15 @@
 <resources>
     <string name="app_name" translatable="false">Lilo</string>
 
+    <!-- Onboarding for update -->
+    <string name="onboardingConfidentialityTitle">Increased privacy and security</string>
+    <string name="onboardingConfidentialityBody">{bold}You lose your browsing history{/bold} but you become a master at leaving no trace on the Internet 🥷</string>
+    <string name="onboardingConfidentialityPrimaryButtonTitle">Continue</string>
+    <string name="onboardingConfidentialitySecondaryButtonTitle">Quit</string>
+    <string name="onboardingNavigationTitle">Simplified navigation</string>
+    <string name="onboardingNavigationBody">{bold}Your tabs and bookmarks start from scratch{/bold} (but you already master them 😉) ! Now, organize them however you want and switch from one tab to another in the blink of an eye. ✨</string>
+    <string name="onboardingNavigationPrimaryButtonTitle">Start</string>
+
     <!-- Onboarding -->
     <string name="onboardingLetsDoItButton">Continue</string>
     <string name="onboardingAddWidgetButton">Add</string>

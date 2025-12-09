@@ -17,6 +17,15 @@
 
 <resources>
 
+    <!-- Onboarding for update -->
+    <string name="onboardingConfidentialityTitle">Confidentialité et sécurité accrues</string>
+    <string name="onboardingConfidentialityBody">{bold}Vous perdez votre historique de navigation{/bold} mais vous passez maître dans l\'art de ne pas laisser de trace sur Internet 🥷</string>
+    <string name="onboardingConfidentialityPrimaryButtonTitle">Continuer</string>
+    <string name="onboardingConfidentialitySecondaryButtonTitle">Quitter</string>
+    <string name="onboardingNavigationTitle">Navigation simplifiée</string>
+    <string name="onboardingNavigationBody">{bold}Vos onglets et favoris repartent à zéro{/bold} (mais vous les maîtrisez déjà 😉) ! Maintenant, organisez-les comme vous voulez et passez d\’un onglet à l\’autre en un clin d\’œil. ✨</string>
+    <string name="onboardingNavigationPrimaryButtonTitle">Démarrer</string>
+
     <!-- Onboarding -->
     <string name="onboardingLetsDoItButton">Continuer</string>
     <string name="onboardingAddWidgetButton">Ajouter</string>
